@@ -350,13 +350,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const question = item.querySelector('.faq-question');
     const answer = item.querySelector('.faq-answer');
 
-    question.addEventListener('click', () => {
+    item.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
+      const answer = item.querySelector('.faq-answer');
 
       // Close all
       faqItems.forEach(i => {
         i.classList.remove('active');
-        i.querySelector('.faq-answer').style.maxHeight = '0';
+        const ans = i.querySelector('.faq-answer');
+        if (ans) ans.style.maxHeight = '0';
       });
 
       // Open clicked (if wasn't already open)
