@@ -1908,20 +1908,74 @@ p {
   .diagnostic-wrapper {
     grid-template-columns: 1fr;
   }
-}
 
-/* Tablet / Mobile Large */
-@media (max-width: 768px) {
-  :root {
-    --section-padding: 80px 0;
+  /* Bento Grid Tablet Stack */
+  .bento-comparison-wrapper {
+    flex-direction: column;
+    align-items: center;
   }
 
+  .bento-vs {
+    margin: 20px 0;
+    transform: rotate(90deg);
+  }
+
+  .bento-wall {
+    width: 100%;
+  }
+
+  /* Hero Orb Tablet */
+  .hero-orb {
+    width: 400px;
+    height: 400px;
+    opacity: 0.5;
+  }
+}
+
+/* Tablet / Mobile Large (768px and below) */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 60px 0;
+    --container-width: 100%;
+  }
+
+  /* Reset overflow for horizontal scrolling issues */
+  body,
+  html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  /* Nav Links & Hamburger */
   .nav-links {
     display: none;
   }
 
   .nav-hamburger {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    /* 3 bars * 2px + 2 gaps */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--platinum-white);
+    border-radius: 2px;
+    transition: all 0.3s ease;
   }
 
   /* Mobile Nav Overlay */
@@ -1937,70 +1991,233 @@ p {
     backdrop-filter: blur(20px);
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 1000;
   }
 
   .nav-links.open a {
     font-size: 1.5rem;
+    padding: 12px;
+  }
+
+  /* Hero Section Mobile */
+  .hero {
+    padding-top: 100px;
+    padding-bottom: 40px;
+    min-height: auto;
+    /* svh is better for mobile browsers but fallback to auto */
+    min-height: 100svh;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 .accent-line {
+    font-size: 0.6em;
+    margin-top: 8px;
+    display: block;
+    line-height: 1.4;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 32px;
+    padding: 0 10px;
   }
 
   .hero-stats {
     grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 40px;
   }
 
+  .hero-stat {
+    padding: 16px;
+  }
+
+  .hero-stat-value {
+    font-size: 2rem;
+  }
+
+  /* Integrations Marquee Mobile */
+  .integrations-section {
+    margin-top: 60px;
+  }
+
+  .marquee-content {
+    gap: 40px;
+  }
+
+  .integration-item svg {
+    height: 24px;
+    /* Smaller logos on mobile */
+  }
+
+  /* Pain Roadmap Mobile */
   .pain-card {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     text-align: center;
     justify-items: center;
+    padding: 24px 20px;
+    gap: 16px;
   }
 
   .pain-card-icon {
-    margin-bottom: 12px;
+    grid-row: 1;
+    margin-bottom: 0;
+    width: 48px;
+    height: 48px;
   }
 
-  .metrics-grid,
-  .testimonials-grid,
-  .steps-grid,
-  .urgency-grid {
+  .pain-card-content {
+    grid-row: 2;
+  }
+
+  .pain-card-metric {
+    grid-row: 3;
+    margin-top: 8px;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  /* Hide connectors on mobile as they don't flow well vertically */
+  .pain-connector {
+    display: none;
+    /* Or replace with small vertical line */
+  }
+
+  /* Add spacing between cards since connectors are gone */
+  .pain-card+.pain-card {
+    margin-top: 16px;
+  }
+
+  /* Bento Grid Mobile */
+  .bento-comparison-wrapper {
+    margin-top: 40px;
+    gap: 0;
+  }
+
+  .bento-wall {
+    padding: 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .bento-grid-inner {
     grid-template-columns: 1fr;
+  }
+
+  .bento-card.wide {
+    grid-column: span 1;
+  }
+
+  /* Metrics Grid */
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Testimonials */
+  .testimonial-card {
+    width: 280px;
+    /* Reduced width for mobile screens so peek works */
+    padding: 20px;
+  }
+
+  .testimonials-marquee-wrapper {
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+
+  /* Steps Grid */
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .steps-grid::before {
     display: none;
   }
 
+  .step-card {
+    padding: 24px;
+  }
+
+  /* Diagnostic Form Mobile */
+  .diagnostic-wrapper {
+    margin-top: 40px;
+    gap: 40px;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .form-card {
+    padding: 24px 20px;
+  }
+
+  /* Footer Mobile */
+  .footer {
+    padding: 60px 0 30px;
   }
 
   .footer-content {
     flex-direction: column;
     gap: 32px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
   }
 
   .footer-links {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
+  }
+
+  .footer-links a {
+    padding: 10px;
+    /* Touch target size */
   }
 }
 
-/* Small Mobile */
+/* Small Mobile (380px and below) */
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
-  .pain-roadmap {
-    width: 100%;
+  .hero-subtitle {
+    font-size: 0.95rem;
   }
 
   .btn {
     width: 100%;
+    padding: 16px 20px;
+    /* Adjust padding to fit text if long */
   }
 
-  .form-card {
-    padding: 24px;
+  .btn-large {
+    font-size: 1rem;
+  }
+
+  /* Stack inputs in calc just in case */
+  .input-group {
+    margin-bottom: 12px;
+  }
+
+  /* Prevent iOS Zoom on inputs */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
   }
 }
 
