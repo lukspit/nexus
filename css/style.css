@@ -1,123 +1,50 @@
 /* ============================================
-   NEXUS V2 — DESIGN SYSTEM & STYLES
-   Premium Medical Intelligence
+   1. HERO CANVAS (FLOW FIELD)
    ============================================ */
-
-/* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
-/* ============================================
-   1. CSS CUSTOM PROPERTIES (TOKENS)
-   ============================================ */
-:root {
-  /* Primary */
-  --deep-medical-blue: #0A2463;
-  --platinum-white: #F0F2F5;
-  --midnight-slate: #1E293B;
-  color-scheme: dark;
-
-  /* Secondary — Brand accent (the hero) */
-  --neural-purple: #7C7FF2;
-  --quantum-cyan: #5CB8C4;
-  --precision-silver: #8A95A8;
-
-  /* Accent — Muted semantic colors (supporting role only) */
-  --success-green: #3DAA8C;
-  --alert-gold: #C8922E;
-  --urgent-coral: #C45C5C;
-
-  /* Backgrounds */
-  --bg-primary: #0B1120;
-  --bg-card: rgba(255, 255, 255, 0.03);
-  --bg-card-hover: rgba(255, 255, 255, 0.06);
-  --bg-glass: rgba(255, 255, 255, 0.04);
-
-  /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-active: rgba(124, 127, 242, 0.3);
-
-  /* Typography */
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-
-  /* Spacing */
-  --section-padding: 100px 0;
-  --container-width: 1200px;
-  --gap-sm: 8px;
-  --gap-md: 16px;
-  --gap-lg: 24px;
-  --gap-xl: 40px;
-  --gap-2xl: 60px;
-
-  /* Transitions */
-  --transition-fast: 200ms ease;
-  --transition-normal: 300ms ease;
-  --transition-slow: 500ms ease;
-
-  /* Shadows */
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.15);
-  --shadow-glow-purple: 0 0 30px rgba(124, 127, 242, 0.1);
-  --shadow-glow-cyan: 0 0 30px rgba(92, 184, 196, 0.1);
-
-  /* Border Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 24px;
+canvas#heroCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.6;
+  /* Slight transparency for text readability */
+  pointer-events: none;
 }
 
-/* ============================================
-   2. RESET & BASE
-   ============================================ */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
-
-body {
-  font-family: var(--font-body);
-  background: var(--bg-primary);
-  color: var(--platinum-white);
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-ul {
-  list-style: none;
-}
-
-button {
+/* Fix for FAQ Clickability on Mobile */
+.faq-item {
+  position: relative;
+  z-index: 10;
   cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
+  /* Ensure it has a background to receive clicks */
+  background: var(--bg-glass);
 }
 
-input,
-select,
-textarea {
-  font-family: inherit;
+.faq-question {
+  position: relative;
+  z-index: 20;
+  /* Higher than item */
+  pointer-events: auto;
+  /* Force clickable */
+}
+
+/* Explicit Spacing Fix for Mobile Cards */
+@media (max-width: 768px) {
+  .pain-card {
+    margin-bottom: 32px !important;
+    /* Force spacing */
+  }
+
+  .pain-card:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Reset margin-top from previous attempt if it conflicts */
+  .pain-card+.pain-card {
+    margin-top: 0;
+  }
 }
 
 .container {

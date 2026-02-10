@@ -7,107 +7,132 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ============================================
-  // 1. NEURAL NETWORK BACKGROUND (Canvas)
+  // 1. FLOW FIELD BACKGROUND (Canvas)
   // ============================================
   const canvas = document.getElementById('heroCanvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
     let width, height;
     let particles = [];
-    let mouse = { x: null, y: null };
-    let animationId;
+    const particleCount = window.innerWidth < 768 ? 40 : 100; // Less particles on mobile
+
+    // Config
+    const fieldSize = 40; // Size of flow field cells
+    const fieldForce = 0.5; // Strength of flow
+    const noiseSpeed = 0.003; // Speed of noise evolution
+    let rows, cols;
+    let zOff = 0; // Time dimension for noise
 
     function resizeCanvas() {
       width = canvas.width = canvas.parentElement.offsetWidth;
       height = canvas.height = canvas.parentElement.offsetHeight;
+      cols = Math.floor(width / fieldSize) + 1;
+      rows = Math.floor(height / fieldSize) + 1;
+    }
+
+    // Pseudorandom noise function (Simplex-like)
+    // Fast implementation for flow field
+    function noise(x, y, z) {
+      const X = Math.floor(x * 255) & 255;
+      const Y = Math.floor(y * 255) & 255;
+      const Z = Math.floor(z * 255) & 255;
+      return (Math.sin(x * 12.9898 + y * 78.233 + z * 37.719) * 43758.5453) % 1;
     }
 
     class Particle {
       constructor() {
+        this.reset();
+      }
+
+      reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.size = Math.random() * 2.5 + 0.5;
-        this.baseAlpha = Math.random() * 0.5 + 0.3;
+        this.vx = 0;
+        this.vy = 0;
+        this.maxSpeed = Math.random() * 1.5 + 0.5; // Varied speed
+        this.size = Math.random() * 2 + 0.5; // Varied size
+        this.life = Math.random() * 100 + 100; // Life span
+        this.color = Math.random() > 0.5 ? 'rgba(124, 127, 242, ' : 'rgba(92, 184, 196, '; // Purple or Cyan
+        this.alpha = 0;
       }
+
       update() {
+        // Calculate grid position
+        const c = Math.floor(this.x / fieldSize);
+        const r = Math.floor(this.y / fieldSize);
+
+        // Get noise value for direction
+        // Simple angle based on noise (0 to 4PI for more swirl)
+        const angle = noise(c * 0.1, r * 0.1, zOff) * Math.PI * 4;
+
+        // Apply force
+        this.vx += Math.cos(angle) * fieldForce;
+        this.vy += Math.sin(angle) * fieldForce;
+
+        // Limit speed
+        const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+        if (speed > this.maxSpeed) {
+          this.vx = (this.vx / speed) * this.maxSpeed;
+          this.vy = (this.vy / speed) * this.maxSpeed;
+        }
+
+        // Move
         this.x += this.vx;
         this.y += this.vy;
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
+
+        // Fade in/out
+        if (this.life > 150) this.alpha += 0.02;
+        else this.alpha -= 0.01;
+
+        this.life--;
+
+        // Wrap/Reset
+        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height || this.life <= 0 || this.alpha <= 0) {
+          if (this.life <= 0 || this.alpha <= 0) this.reset();
+          else {
+            // Just wrap if simple edge hit, but reset often looks better for flow
+            this.x = (this.x + width) % width;
+            this.y = (this.y + height) % height;
+          }
+        }
+
+        // Clamp alpha
+        if (this.alpha > 0.6) this.alpha = 0.6;
+        if (this.alpha < 0) this.alpha = 0;
       }
+
       draw() {
         ctx.beginPath();
+        // Draw tail (optional, expensive on mobile)
+        // Simple circle for performance
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(6, 182, 212, ${this.baseAlpha})`;
+        ctx.fillStyle = this.color + this.alpha + ')';
         ctx.fill();
       }
     }
 
     function initParticles() {
       particles = [];
-      const count = window.innerWidth < 768 ? 35 : 65;
-      for (let i = 0; i < count; i++) {
+      for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
     }
 
-    function drawConnections() {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 160) {
-            const alpha = (1 - dist / 160) * 0.4;
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
-            ctx.lineWidth = 0.6;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-        // Mouse interaction
-        if (mouse.x !== null) {
-          const dx = particles[i].x - mouse.x;
-          const dy = particles[i].y - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 200) {
-            const alpha = (1 - dist / 200) * 0.6;
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(6, 182, 212, ${alpha})`;
-            ctx.lineWidth = 0.8;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
     function animateCanvas() {
-      ctx.clearRect(0, 0, width, height);
+      // Trail effect
+      ctx.fillStyle = 'rgba(11, 17, 32, 0.1)'; // Dark fade for trails
+      ctx.fillRect(0, 0, width, height);
+
+      zOff += noiseSpeed; // Evolve field over time
+
       particles.forEach(p => { p.update(); p.draw(); });
-      drawConnections();
+
       animationId = requestAnimationFrame(animateCanvas);
     }
 
     window.addEventListener('resize', () => {
       resizeCanvas();
       initParticles();
-    });
-
-    canvas.addEventListener('mousemove', e => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    });
-
-    canvas.addEventListener('mouseleave', () => {
-      mouse.x = null;
-      mouse.y = null;
     });
 
     resizeCanvas();
