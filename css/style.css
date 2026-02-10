@@ -1296,6 +1296,8 @@ p {
   justify-content: center;
   transition: transform var(--transition-normal);
   color: var(--precision-silver);
+  /* Ensure icon doesn't shrink */
+  flex-shrink: 0;
 }
 
 .faq-item.active .faq-icon {
@@ -1307,6 +1309,9 @@ p {
   max-height: 0;
   overflow: hidden;
   transition: max-height var(--transition-normal);
+  /* Fix for mobile touch z-index issues */
+  position: relative;
+  z-index: 2;
 }
 
 .faq-answer-inner {
@@ -1948,17 +1953,7 @@ p {
   }
 
   .nav-hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    /* 3 bars * 2px + 2 gaps */
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
+    display: none;
   }
 
   .nav-hamburger span {
@@ -2085,7 +2080,7 @@ p {
 
   /* Add spacing between cards since connectors are gone */
   .pain-card+.pain-card {
-    margin-top: 16px;
+    margin-top: 32px;
   }
 
   /* Bento Grid Mobile */
@@ -2118,11 +2113,38 @@ p {
   .testimonial-card {
     width: 280px;
     /* Reduced width for mobile screens so peek works */
-    padding: 20px;
+    padding: 24px;
+    scroll-snap-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .testimonials-marquee-wrapper {
-    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    mask-image: none;
+    margin-top: 32px;
+  }
+
+  .marquee-row {
+    width: 100%;
+    overflow: visible;
+  }
+
+  /* Disable marquee animation and enable native scroll on mobile */
+  .marquee-row.left .marquee-inner {
+    animation: none;
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .marquee-row.left .marquee-inner::-webkit-scrollbar {
+    display: none;
   }
 
   /* Steps Grid */
