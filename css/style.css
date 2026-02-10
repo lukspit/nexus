@@ -1,4 +1,126 @@
 /* ============================================
+   NEXUS V2 — DESIGN SYSTEM & STYLES
+   Premium Medical Intelligence
+   ============================================ */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ============================================
+   1. CSS CUSTOM PROPERTIES (TOKENS)
+   ============================================ */
+:root {
+  /* Primary */
+  --deep-medical-blue: #0A2463;
+  --platinum-white: #F0F2F5;
+  --midnight-slate: #1E293B;
+  color-scheme: dark;
+
+  /* Secondary — Brand accent (the hero) */
+  --neural-purple: #7C7FF2;
+  --quantum-cyan: #5CB8C4;
+  --precision-silver: #8A95A8;
+
+  /* Accent — Muted semantic colors (supporting role only) */
+  --success-green: #3DAA8C;
+  --alert-gold: #C8922E;
+  --urgent-coral: #C45C5C;
+
+  /* Backgrounds */
+  --bg-primary: #0B1120;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --bg-glass: rgba(255, 255, 255, 0.04);
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-active: rgba(124, 127, 242, 0.3);
+
+  /* Typography */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --section-padding: 100px 0;
+  --container-width: 1200px;
+  --gap-sm: 8px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 40px;
+  --gap-2xl: 60px;
+
+  /* Transitions */
+  --transition-fast: 200ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.15);
+  --shadow-glow-purple: 0 0 30px rgba(124, 127, 242, 0.1);
+  --shadow-glow-cyan: 0 0 30px rgba(92, 184, 196, 0.1);
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+}
+
+/* ============================================
+   2. RESET & BASE
+   ============================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--platinum-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* ============================================
    1. HERO CANVAS (FLOW FIELD)
    ============================================ */
 canvas#heroCanvas {
