@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus - Atendimento Inteligente 24/7 para Clinicas Medicas</title>
+  <meta name="description"
+    content="IA de atendimento que responde, qualifica e agenda consultas no WhatsApp 24/7. Resposta em 8 segundos, 38% mais conversao e ate R$ 300 mil recuperados por ano. Diagnostico gratuito.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/logo-icon.png">
+</head>
+
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <img src="assets/logo-icon.png" alt="Nexus">
+        <span class="nav-logo-text">Nexus</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#como-funciona">Como Funciona</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#faq">FAQ</a>
+        <a href="#diagnostico" class="nav-cta">Diagnostico Gratuito</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== SECTION 1: HERO ===== -->
+  <section class="hero" id="hero">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-orb"></div>
+        <div class="shiny-badge-wrapper">
+          <div class="shiny-badge">
+            <span class="shiny-badge-text">Inteligencia Medica Premium</span>
+          </div>
+        </div>
+        <h1 class="gradient-text">
+          Sua Clinica Atendendo em 8 Segundos.
+          <span class="accent-line">Toda Hora. Todo Dia. Com IA Que Entende Seu Paciente.</span>
+        </h1>
+        <p class="hero-subtitle">
+          IA de atendimento que responde, qualifica e agenda consultas no WhatsApp
+          — 24 horas por dia, sem sobrecarregar sua equipe.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#diagnostico" class="btn btn-primary btn-large magnetic-btn" data-strength="30">
+            Agendar Meu Diagnostico Gratuito
+          </a>
+          <span class="btn-micro">
+            2 Minutos para Preencher
+            <span>|</span>
+            Sem cartao de credito
+            <span>|</span>
+            Resultado instantaneo
+          </span>
+        </div>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="hero-stat">
+          <div class="hero-stat-value" data-target="8" data-suffix="s">0s</div>
+          <div class="hero-stat-label">tempo medio de resposta com Nexus</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value" data-target="24" data-suffix="/7">0</div>
+          <div class="hero-stat-label">atendimento ininterrupto, inclusive feriados</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value" data-target="38" data-suffix="%">0%</div>
+          <div class="hero-stat-label">aumento medio na conversao de leads</div>
+        </div>
+      </div>
+
+      <!-- INTEGRATIONS MARQUEE -->
+      <div class="integrations-section reveal">
+        <p class="integrations-label">Integra-se perfeitamente com:</p>
+        <div class="marquee-wrapper">
+          <div class="marquee-content">
+            <!-- WhatsApp -->
+            <span class="integration-item" title="WhatsApp Business">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M15 0C6.717 0 0 6.717 0 15C0 17.65 0.69 20.128 1.889 22.285L0.635 28.5L7.155 26.85C9.444 28.2 12.128 29 15 29C23.283 29 30 22.283 30 14C30 5.717 23.283 0 15 0ZM21.966 20.378C21.666 21.228 20.573 21.956 19.673 22.147C19.06 22.278 18.273 22.378 15.589 21.264C12.155 19.839 9.945 16.363 9.774 16.134C9.602 15.905 8.38 14.28 8.38 12.597C8.38 10.914 9.238 10.096 9.58 9.73C9.87 9.42 10.35 9.355 10.82 9.355C10.975 9.355 11.127 9.363 11.266 9.37C11.666 9.39 11.866 9.418 12.133 10.058C12.466 10.858 13.28 12.846 13.38 13.053C13.48 13.26 13.578 13.541 13.444 13.808C13.31 14.075 13.2 14.2 13.01 14.42C12.82 14.639 12.64 14.78 12.44 15.02C12.26 15.228 12.062 15.46 12.3 15.867C12.535 16.273 13.35 17.604 14.55 18.672C16.096 20.048 17.35 20.487 17.79 20.67C18.19 20.835 18.665 20.785 18.96 20.47C19.33 20.08 19.79 19.53 20.16 18.96C20.44 18.53 20.8 18.59 21.24 18.75C21.69 18.91 24.06 20.095 24.55 20.34C25.04 20.585 25.36 20.706 25.47 20.898C25.58 21.09 25.58 21.96 25.18 22.81L21.966 20.378Z"
+                  fill="currentColor" />
+                <text x="36" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">WhatsApp</text>
+              </svg>
+            </span>
+            <!-- Google Calendar -->
+            <span class="integration-item" title="Google Calendar">
+              <svg width="150" height="30" viewBox="0 0 150 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="22" height="22" rx="3" stroke="currentColor" stroke-width="2" />
+                <path d="M7 0V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M19 0V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M2 9H24" stroke="currentColor" stroke-width="2" />
+                <text x="32" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">Google Calendar</text>
+              </svg>
+            </span>
+            <!-- RD Station (Proxy) -->
+            <span class="integration-item" title="RD Station">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 25V10M11 25V5M17 25V15" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <text x="28" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">RD Station</text>
+              </svg>
+            </span>
+            <!-- Doctoralia (Proxy) -->
+            <span class="integration-item" title="Doctoralia">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2V22M2 12H22" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                <text x="30" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">Doctoralia</text>
+              </svg>
+            </span>
+            <!-- Salesforce -->
+            <span class="integration-item" title="Salesforce">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 10C10 7 12 5 15 5C17 5 18 6 19 7C20 6 21 6 22 6C25 6 27 8 27 11C27 11 27 11 27 11C28 11 29 12 29 13C29 15 28 16 26 16C26 16 25 16 24 16L12 16C11 16 10 15 10 14"
+                  stroke="currentColor" stroke-width="2" fill="none" />
+                <text x="36" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">Salesforce</text>
+              </svg>
+            </span>
+            <!-- HubSpot -->
+            <span class="integration-item" title="HubSpot">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="15" r="3" fill="currentColor" />
+                <circle cx="18" cy="8" r="3" fill="currentColor" />
+                <circle cx="20" cy="18" r="3" fill="currentColor" />
+                <line x1="10" y1="15" x2="18" y2="8" stroke="currentColor" stroke-width="2" />
+                <line x1="18" y1="8" x2="20" y2="18" stroke="currentColor" stroke-width="2" />
+                <text x="30" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">HubSpot</text>
+              </svg>
+            </span>
+
+            <!-- Duplicates -->
+            <span class="integration-item" title="WhatsApp Business">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M15 0C6.717 0 0 6.717 0 15C0 17.65 0.69 20.128 1.889 22.285L0.635 28.5L7.155 26.85C9.444 28.2 12.128 29 15 29C23.283 29 30 22.283 30 14C30 5.717 23.283 0 15 0ZM21.966 20.378C21.666 21.228 20.573 21.956 19.673 22.147C19.06 22.278 18.273 22.378 15.589 21.264C12.155 19.839 9.945 16.363 9.774 16.134C9.602 15.905 8.38 14.28 8.38 12.597C8.38 10.914 9.238 10.096 9.58 9.73C9.87 9.42 10.35 9.355 10.82 9.355C10.975 9.355 11.127 9.363 11.266 9.37C11.666 9.39 11.866 9.418 12.133 10.058C12.466 10.858 13.28 12.846 13.38 13.053C13.48 13.26 13.578 13.541 13.444 13.808C13.31 14.075 13.2 14.2 13.01 14.42C12.82 14.639 12.64 14.78 12.44 15.02C12.26 15.228 12.062 15.46 12.3 15.867C12.535 16.273 13.35 17.604 14.55 18.672C16.096 20.048 17.35 20.487 17.79 20.67C18.19 20.835 18.665 20.785 18.96 20.47C19.33 20.08 19.79 19.53 20.16 18.96C20.44 18.53 20.8 18.59 21.24 18.75C21.69 18.91 24.06 20.095 24.55 20.34C25.04 20.585 25.36 20.706 25.47 20.898C25.58 21.09 25.58 21.96 25.18 22.81L21.966 20.378Z"
+                  fill="currentColor" />
+                <text x="36" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">WhatsApp</text>
+              </svg>
+            </span>
+            <!-- Google Calendar -->
+            <span class="integration-item" title="Google Calendar">
+              <svg width="150" height="30" viewBox="0 0 150 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="22" height="22" rx="3" stroke="currentColor" stroke-width="2" />
+                <path d="M7 0V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M19 0V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M2 9H24" stroke="currentColor" stroke-width="2" />
+                <text x="32" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">Google Calendar</text>
+              </svg>
+            </span>
+            <!-- RD Station -->
+            <span class="integration-item" title="RD Station">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 25V10M11 25V5M17 25V15" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <text x="28" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">RD Station</text>
+              </svg>
+            </span>
+            <!-- Doctoralia -->
+            <span class="integration-item" title="Doctoralia">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2V22M2 12H22" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                <text x="30" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">Doctoralia</text>
+              </svg>
+            </span>
+            <!-- Salesforce -->
+            <span class="integration-item" title="Salesforce">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 10C10 7 12 5 15 5C17 5 18 6 19 7C20 6 21 6 22 6C25 6 27 8 27 11C27 11 27 11 27 11C28 11 29 12 29 13C29 15 28 16 26 16C26 16 25 16 24 16L12 16C11 16 10 15 10 14"
+                  stroke="currentColor" stroke-width="2" fill="none" />
+                <text x="36" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">Salesforce</text>
+              </svg>
+            </span>
+            <!-- HubSpot -->
+            <span class="integration-item" title="HubSpot">
+              <svg width="120" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="15" r="3" fill="currentColor" />
+                <circle cx="18" cy="8" r="3" fill="currentColor" />
+                <circle cx="20" cy="18" r="3" fill="currentColor" />
+                <line x1="10" y1="15" x2="18" y2="8" stroke="currentColor" stroke-width="2" />
+                <line x1="18" y1="8" x2="20" y2="18" stroke="currentColor" stroke-width="2" />
+                <text x="30" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="16"
+                  fill="currentColor">HubSpot</text>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="section-divider"></div>
+
+  <!-- ===== SECTION 2: STORYTELLING (PAIN ROADMAP) ===== -->
+  <section class="storytelling" id="storytelling">
+    <div class="container">
+      <div class="storytelling-header reveal">
+        <span class="section-label">A Realidade</span>
+        <h2 class="text-center">Os 4 Vazamentos Que Custam Ate R$ 300k/Ano Para Clinicas</h2>
+        <p class="section-subtitle">A maioria dos donos de clinica nao percebe quanto dinheiro escapa por essas brechas
+          todos os dias.</p>
+      </div>
+
+      <div class="pain-roadmap">
+        <!-- Pain 1: Lost Leads (PRIORITY) -->
+        <div class="pain-card reveal">
+          <div class="pain-card-glow"></div>
+          <div class="pain-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <line x1="23" y1="11" x2="17" y2="11" />
+            </svg>
+          </div>
+          <div class="pain-card-content">
+            <h3>Leads Sem Resposta</h3>
+            <p>Lead manda mensagem as 14h, secretaria responde as 16h. Nesse tempo, o concorrente ja agendou a consulta.
+            </p>
+          </div>
+          <div class="pain-card-metric">
+            <span class="pain-metric-value">3-5 leads/dia</span>
+            <span class="pain-metric-label">perdidos por demora na resposta</span>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="pain-connector reveal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+
+        <!-- Pain 2: Operational Overload -->
+        <div class="pain-card reveal reveal-delay-1">
+          <div class="pain-card-glow"></div>
+          <div class="pain-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <div class="pain-card-content">
+            <h3>Sobrecarga Operacional</h3>
+            <p>Secretaria dividida entre WhatsApp, confirmacoes e atendimento presencial. Ninguem faz nada bem quando
+              faz
+              tudo ao mesmo tempo.</p>
+          </div>
+          <div class="pain-card-metric">
+            <span class="pain-metric-value">6h/dia</span>
+            <span class="pain-metric-label">gastas em tarefas repetitivas</span>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="pain-connector reveal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+
+        <!-- Pain 3: No Follow-up -->
+        <div class="pain-card reveal reveal-delay-2">
+          <div class="pain-card-glow"></div>
+          <div class="pain-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <div class="pain-card-content">
+            <h3>Follow-up Inexistente</h3>
+            <p>Paciente sumiu depois da primeira consulta? Sem retorno agendado, sem reativacao. Dinheiro que ja estava
+              no
+              bolso vai embora.</p>
+          </div>
+          <div class="pain-card-metric">
+            <span class="pain-metric-value">40-60%</span>
+            <span class="pain-metric-label">dos pacientes nao retornam sem follow-up</span>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="pain-connector reveal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+
+        <!-- Pain 4: No-Shows (consequence) -->
+        <div class="pain-card pain-card-total reveal reveal-delay-3">
+          <div class="pain-card-glow total"></div>
+          <div class="pain-card-icon total">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+            </svg>
+          </div>
+          <div class="pain-card-content">
+            <h3>No-Shows e Agenda Vazia</h3>
+            <p>Consequencia de tudo acima: sem confirmacao automatica, pacientes esquecem ou desistem. Horarios ficam
+              vazios.</p>
+          </div>
+          <div class="pain-card-metric total">
+            <span class="pain-metric-value">Ate R$ 300k/ano</span>
+            <span class="pain-metric-label">em perdas acumuladas para clinicas medias</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center reveal" style="margin-top: 48px;">
+        <a href="#diagnostico" class="btn btn-primary">Descobrir Quanto Minha Clinica Perde</a>
+        <span class="btn-micro">Diagnostico gratuito e personalizado para sua clinica</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== SECTION 3: BEFORE vs AFTER (SIMPLIFIED GRID) ===== -->
+  <!-- ===== SECTION 3: BEFORE vs AFTER (BENTO GRID REDESIGN) ===== -->
+  <section class="before-after" id="transformacao">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Transformacao Real</span>
+        <h2>O Efeito Nexus na Sua Operacao</h2>
+        <p class="section-subtitle">Visual, Direto e Sem Comparacao.</p>
+      </div>
+
+      <div class="bento-comparison-wrapper reveal">
+        <!-- LEFT WALL: The Old Way (Chaos) -->
+        <div class="bento-wall before">
+          <div class="bento-header">
+            <div class="bento-icon-box danger">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <h3>Clinica Tradicional</h3>
+          </div>
+
+          <div class="bento-grid-inner">
+            <!-- Card 1: Response Time -->
+            <div class="bento-card chaos">
+              <div class="bento-label">Tempo de Resposta</div>
+              <div class="bento-value danger">2 a 4 horas</div>
+              <p class="bento-desc">Paciente ja fechou com outro.</p>
+            </div>
+
+            <!-- Card 2: No Show -->
+            <div class="bento-card chaos">
+              <div class="bento-label">Taxa de No-Show</div>
+              <div class="bento-value warning">~30%</div>
+              <p class="bento-desc">Agenda cheia de buracos.</p>
+            </div>
+
+            <!-- Card 3: Context -->
+            <div class="bento-card chaos wide">
+              <div class="bento-status">
+                <span class="status-dot red-pulse"></span>
+                Secretaria Sobrecarregada
+              </div>
+              <p class="bento-desc">"Nao consigo responder todo mundo e atender o telefone ao mesmo tempo."</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTER: VS Badge -->
+        <div class="bento-vs">VS</div>
+
+        <!-- RIGHT WALL: The Nexus Way (Order) -->
+        <div class="bento-wall after">
+          <div class="bento-header">
+            <div class="bento-icon-box success">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h3>Clinica com Nexus AI</h3>
+          </div>
+
+          <div class="bento-grid-inner">
+            <!-- Card 1: Response Time -->
+            <div class="bento-card zen">
+              <div class="bento-label">Tempo de Resposta</div>
+              <div class="bento-value success">8 Segundos</div>
+              <p class="bento-desc">Atendimento imediato, 24/7.</p>
+            </div>
+
+            <!-- Card 2: No Show -->
+            <div class="bento-card zen">
+              <div class="bento-label">Taxa de No-Show</div>
+              <div class="bento-value success">~7%</div>
+              <p class="bento-desc">Confirmacoes automaticas.</p>
+            </div>
+
+            <!-- Card 3: Context -->
+            <div class="bento-card zen wide">
+              <div class="bento-status">
+                <span class="status-dot green-pulse"></span>
+                Equipe Focada
+              </div>
+              <p class="bento-desc">IA filtra e agenda. Secretaria foca no paciente presencial e casos complexos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center reveal" style="margin-top: 48px;">
+        <a href="#diagnostico" class="btn btn-primary btn-large magnetic-btn" data-strength="40">
+          <span class="btn-text">Quero Essa Transformacao Agora</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== SECTION 4: SOCIAL PROOF ===== -->
+  <section class="social-proof" id="resultados">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Resultados Comprovados</span>
+        <h2>O Que Medicos Estao Dizendo</h2>
+        <p class="section-subtitle">Resultados reais de clinicas que implementaram o Nexus.</p>
+      </div>
+
+      <!-- Aggregate Metrics (reordered: response → conversion → ROI) -->
+      <div class="metrics-grid">
+        <div class="metric-card reveal">
+          <div class="metric-value cyan" data-target="8" data-suffix="s">0s</div>
+          <div class="metric-label">Tempo medio de resposta</div>
+        </div>
+        <div class="metric-card reveal reveal-delay-1">
+          <div class="metric-value purple" data-target="38" data-suffix="%">0%</div>
+          <div class="metric-label">Mais conversao de leads</div>
+        </div>
+        <div class="metric-card reveal reveal-delay-2">
+          <div class="metric-value green" data-target="300" data-prefix="R$ " data-suffix="k">0</div>
+          <div class="metric-label">Economia media anual por clinica</div>
+        </div>
+      </div>
+
+      <!-- Testimonials (shortened, diversified themes) -->
+      <!-- Marquee Wrapper -->
+      <!-- Marquee Wrapper (Single Row) -->
+      <div class="testimonials-marquee-wrapper">
+        <div class="marquee-row left">
+          <div class="marquee-inner">
+            <!-- Card 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">RM</div>
+                <div class="testimonial-info">
+                  <h4>Dr. Ricardo Mendes</h4>
+                  <p>Dermatologia Avançada</p>
+                </div>
+              </div>
+              <p class="testimonial-quote">"O Nexus se pagou em 45 dias. Levei anos testando agências, mas só com IA
+                resolvi o problema de resposta."</p>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <!-- Card 2 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">AC</div>
+                <div class="testimonial-info">
+                  <h4>Dra. Ana Paula Costa</h4>
+                  <p>Ortopedia</p>
+                </div>
+              </div>
+              <p class="testimonial-quote">"Minha secretária voltou a amar o trabalho. Ela foca no presencial e o Nexus
+                cuida do WhatsApp."</p>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <!-- Card 3 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">FA</div>
+                <div class="testimonial-info">
+                  <h4>Dr. Fernando Alves</h4>
+                  <p>Clínica Integrada</p>
+                </div>
+              </div>
+              <p class="testimonial-quote">"No-shows caíram 73% em uma semana. As confirmações automáticas salvam minha
+                agenda."</p>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <!-- Card 4 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">LM</div>
+                <div class="testimonial-info">
+                  <h4>Dra. Luciana Martins</h4>
+                  <p>Estética</p>
+                </div>
+              </div>
+              <p class="testimonial-quote">"A qualificação é perfeita. Só chegam no balcão pacientes prontos para fechar
+                procedimentos."</p>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <!-- Card 5 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">JP</div>
+                <div class="testimonial-info">
+                  <h4>Dr. João Paulo S.</h4>
+                  <p>Oftalmologia</p>
+                </div>
+              </div>
+              <p class="testimonial-quote">"Integração total com o Google Agenda. Não preciso mais confirmar manualmente
+                um por um."</p>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+
+            <!-- Duplicates for Loop -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">RM</div>
+                <div class="testimonial-info">
+                  <h4>Dr. Ricardo Mendes</h4>
+                  <p>Dermatologia Avançada</p>
+                </div>
+              </div>
+              <p class="testimonial-quote">"O Nexus se pagou em 45 dias. Levei anos testando agências, mas só com IA
+                resolvi o problema de resposta."</p>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <!-- Card 2 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">AC</div>
+                <div class="testimonial-info">
+                  <h4>Dra. Ana Paula Costa</h4>
+                  <p>Ortopedia</p>
+                </div>
+              </div>
+              <p class="testimonial-quote">"Minha secretária voltou a amar o trabalho. Ela foca no presencial e o Nexus
+                cuida do WhatsApp."</p>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <!-- Card 3 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">FA</div>
+                <div class="testimonial-info">
+                  <h4>Dr. Fernando Alves</h4>
+                  <p>Clínica Integrada</p>
+                </div>
+              </div>
+              <p class="testimonial-quote">"No-shows caíram 73% em uma semana. As confirmações automáticas salvam minha
+                agenda."</p>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <!-- Card 4 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">LM</div>
+                <div class="testimonial-info">
+                  <h4>Dra. Luciana Martins</h4>
+                  <p>Estética</p>
+                </div>
+              </div>
+              <p class="testimonial-quote">"A qualificação é perfeita. Só chegam no balcão pacientes prontos para fechar
+                procedimentos."</p>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <!-- Card 5 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-avatar">JP</div>
+                <div class="testimonial-info">
+                  <h4>Dr. João Paulo S.</h4>
+                  <p>Oftalmologia</p>
+                </div>
+              </div>
+              <p class="testimonial-quote">"Integração total com o Google Agenda. Não preciso mais confirmar manualmente
+                um por um."</p>
+              <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center reveal" style="margin-top: 48px;">
+        <a href="#como-funciona" class="btn btn-primary btn-large">Veja Como Funciona</a>
+        <span class="btn-micro">3 passos simples para ativar o Nexus</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== SECTION 5: HOW IT WORKS ===== -->
+  <section class="how-it-works" id="como-funciona">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Simples e Rapido</span>
+        <h2>Ativo em 72 Horas. Sem Complicacao.</h2>
+        <p class="section-subtitle">Tres passos entre voce e um atendimento que funciona 24/7.</p>
+      </div>
+
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card reveal">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Diagnostico Gratuito</h3>
+          <p class="step-subtitle">Hoje &mdash; 2 minutos</p>
+          <p class="step-description">
+            Preencha um formulario rapido. Receba um relatorio personalizado com suas perdas atuais e projecao de ROI
+            com
+            o Nexus.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">02</div>
+          <h3 class="step-title">Implementacao em 72h</h3>
+          <p class="step-subtitle">Nos configuramos, voce aprova</p>
+          <p class="step-description">
+            Integramos com seu WhatsApp Business, personalizamos os fluxos e treinamos sua equipe em 30 minutos. Sem
+            parar sua operacao.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Resultados do Dia 1</h3>
+          <p class="step-subtitle">IA ativa 24/7</p>
+          <p class="step-description">
+            A IA assume o atendimento completo. Acompanhe tudo em tempo real pelo dashboard. Melhoria continua com
+            aprendizado automatico.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center reveal" style="margin-top: 48px;">
+        <a href="#diagnostico" class="btn btn-primary btn-large">Começar Agora</a>
+        <span class="btn-micro">Diagnóstico gratuito em 2 minutos</span>
+      </div>
+    </div>
+  </section>
+
+
+
+  <div class="section-divider"></div>
+
+  <!-- ===== SECTION 7: FAQ ===== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Perguntas Frequentes</span>
+        <h2>Duvidas? Outros Medicos Tambem Tiveram</h2>
+      </div>
+
+      <div class="faq-list">
+        <!-- FAQ 1 -->
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            "Minha secretaria nao vai perder o emprego?"
+            <span class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Nao. O Nexus libera sua secretaria para o que importa: atendimento presencial, casos complexos e
+              relacionamento com pacientes. Nas clinicas que usam Nexus, nenhuma secretaria foi demitida.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            "O paciente percebe que e IA?"
+            <span class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              A IA usa linguagem natural adaptada ao tom da sua clinica. Em casos complexos, transfere para humano.
+              NPS medio: 4.9/5.0. Pacientes elogiam a velocidade e eficiencia.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            "Quanto tempo leva para implementar?"
+            <span class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              72 horas do diagnostico a ativacao completa. Treinamento de 30 minutos para sua equipe. Tudo acontece em
+              paralelo — sem parar sua operacao.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            "E se eu nao gostar?"
+            <span class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Garantia de 30 dias. Se nao der resultado, devolvemos 100% do investimento. Sem perguntas, sem burocracia.
+              Ate hoje: zero pedidos de reembolso.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            "Meus dados e dos pacientes estao seguros?"
+            <span class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              100% em conformidade com a LGPD. Dados criptografados, servidores no Brasil, e nenhuma informacao e
+              compartilhada com terceiros. Seguranca de nivel hospitalar.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            "Integra com meu sistema de agenda?"
+            <span class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              O Nexus se integra com os principais sistemas de gestao de clinicas do mercado. Na implementacao,
+              configuramos tudo para funcionar com sua ferramenta atual.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== SECTION 8: URGENCY ===== -->
+  <section class="urgency" id="urgencia">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Por Que Agora</span>
+        <h2>Seus Concorrentes Ja Estao Respondendo em 8 Segundos</h2>
+        <p class="section-subtitle">A pergunta nao e "se" voce vai usar IA. E se voce sera o primeiro ou o ultimo na
+          sua regiao.</p>
+      </div>
+
+      <div class="urgency-grid">
+        <div class="urgency-card reveal">
+          <div class="urgency-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
+          </div>
+          <h4>Vantagem de Primeiro</h4>
+          <p>Clinicas que adotam IA primeiro capturam leads que antes iam para concorrentes. Quem responde em 8s ganha
+            de
+            quem responde em 2h.</p>
+        </div>
+        <div class="urgency-card reveal reveal-delay-1">
+          <div class="urgency-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <h4>Custo da Espera</h4>
+          <p>Cada semana sem IA sao leads perdidos, consultas vazias e receita que nao volta. O diagnostico gratuito
+            mostra exatamente quanto.</p>
+        </div>
+        <div class="urgency-card reveal reveal-delay-2">
+          <div class="urgency-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+          </div>
+          <h4>Atendimento Personalizado</h4>
+          <p>Nosso time implementa poucas clinicas por mes para garantir qualidade. Cada clinica recebe configuracao
+            customizada e treinamento dedicado.</p>
+        </div>
+      </div>
+
+      <div class="text-center reveal">
+        <a href="#diagnostico" class="btn btn-primary btn-large">Agendar Meu Diagnostico Gratuito</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== SECTION 9: DIAGNOSTIC FORM (2 STEPS) ===== -->
+  <section class="diagnostic" id="diagnostico">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Diagnostico Gratuito</span>
+        <h2>Solicite Seu Diagnostico em 2 Minutos</h2>
+        <p class="section-subtitle">Sem compromisso. Sem cartao de credito. Apenas dados reais sobre como o Nexus pode
+          ajudar sua clinica.</p>
+      </div>
+
+      <div class="diagnostic-wrapper">
+        <!-- Left: Info -->
+        <div class="diagnostic-info reveal">
+          <h3>O que voce recebe:</h3>
+          <p>Um relatorio personalizado com dados reais sobre sua clinica e uma projecao de como o Nexus pode
+            transformar
+            seus resultados.</p>
+
+          <div class="diagnostic-benefits">
+            <div class="diagnostic-benefit">
+              <div class="diagnostic-benefit-icon">&#10003;</div>
+              <span>Analise das suas perdas atuais</span>
+            </div>
+            <div class="diagnostic-benefit">
+              <div class="diagnostic-benefit-icon">&#10003;</div>
+              <span>Projecao de ROI personalizada</span>
+            </div>
+            <div class="diagnostic-benefit">
+              <div class="diagnostic-benefit-icon">&#10003;</div>
+              <span>Plano de implementacao sob medida</span>
+            </div>
+            <div class="diagnostic-benefit">
+              <div class="diagnostic-benefit-icon">&#10003;</div>
+              <span>Resposta em ate 2 horas por WhatsApp</span>
+            </div>
+          </div>
+
+          <!-- Trust signals -->
+          <div class="metrics-grid" style="grid-template-columns: repeat(2, 1fr); gap: 12px;">
+            <div class="metric-card" style="padding: 20px 16px;">
+              <div class="metric-value cyan" style="font-size: 2rem;">47</div>
+              <div class="metric-label">Clinicas atendidas</div>
+            </div>
+            <div class="metric-card" style="padding: 20px 16px;">
+              <div class="metric-value green" style="font-size: 2rem;">100%</div>
+              <div class="metric-label">Taxa de renovacao</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form (2 STEPS) -->
+        <div class="form-card reveal reveal-delay-2">
+          <!-- Step Indicators -->
+          <div class="form-steps-indicator">
+            <div class="form-step-dot active" data-step="1"></div>
+            <div class="form-step-line"></div>
+            <div class="form-step-dot" data-step="2"></div>
+          </div>
+
+          <form id="diagnosticForm" novalidate>
+            <!-- Step 1: Contact Info -->
+            <div class="form-step active" data-step="1">
+              <h4 class="form-step-title">Seus Dados</h4>
+              <div class="form-group">
+                <label>Seu Nome <span class="required">*</span></label>
+                <input type="text" name="fullName" placeholder="Ex: Dr. Ricardo Mendes" required>
+              </div>
+              <div class="form-group">
+                <label>Nome da sua Clinica <span class="required">*</span></label>
+                <input type="text" name="clinicName" placeholder="Ex: Clinica Derma Premium" required>
+              </div>
+              <div class="form-group">
+                <label>WhatsApp (com DDD) <span class="required">*</span></label>
+                <input type="tel" name="whatsapp" placeholder="(11) 99999-9999" required>
+              </div>
+              <div class="form-group">
+                <label>Email <span class="required">*</span></label>
+                <input type="email" name="email" placeholder="seu@email.com" required>
+              </div>
+              <div class="form-nav">
+                <div></div>
+                <button type="button" class="form-btn-next" data-next="2">Proximo</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Clinic Context -->
+            <div class="form-step" data-step="2">
+              <h4 class="form-step-title">Sobre Sua Clinica</h4>
+              <div class="form-group">
+                <label>Especialidade <span class="required">*</span></label>
+                <select name="specialty" required>
+                  <option value="">Selecione...</option>
+                  <option value="dermatologia">Dermatologia</option>
+                  <option value="ortopedia">Ortopedia</option>
+                  <option value="cardiologia">Cardiologia</option>
+                  <option value="ginecologia">Ginecologia</option>
+                  <option value="pediatria">Pediatria</option>
+                  <option value="odontologia">Odontologia</option>
+                  <option value="oftalmologia">Oftalmologia</option>
+                  <option value="multiespecialidades">Multiespecialidades</option>
+                  <option value="outra">Outra</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Cidade <span class="required">*</span></label>
+                  <input type="text" name="city" placeholder="Ex: Sao Paulo" required>
+                </div>
+                <div class="form-group">
+                  <label>Estado <span class="required">*</span></label>
+                  <select name="state" required>
+                    <option value="">UF</option>
+                    <option value="SP">SP</option>
+                    <option value="RJ">RJ</option>
+                    <option value="MG">MG</option>
+                    <option value="RS">RS</option>
+                    <option value="PR">PR</option>
+                    <option value="SC">SC</option>
+                    <option value="BA">BA</option>
+                    <option value="PE">PE</option>
+                    <option value="CE">CE</option>
+                    <option value="GO">GO</option>
+                    <option value="DF">DF</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Quantos medicos atendem?</label>
+                <input type="number" name="doctors" placeholder="Ex: 3" min="1">
+              </div>
+              <div class="form-nav">
+                <button type="button" class="form-btn-back" data-back="1">Voltar</button>
+                <div></div>
+              </div>
+              <button type="submit" class="form-btn-submit">Solicitar Diagnostico Gratuito</button>
+              <div class="form-security">
+                <span>Dados seguros (LGPD)</span>
+                <span>Resposta em ate 2h</span>
+                <span>Sem compromisso</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="assets/logo-icon.png" alt="Nexus">
+          <span class="footer-logo-text">Nexus</span>
+        </div>
+        <div class="footer-links">
+          <a href="#como-funciona">Como Funciona</a>
+          <a href="#resultados">Resultados</a>
+          <a href="#faq">FAQ</a>
+          <a href="#diagnostico">Diagnostico</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Synapse Nexus &mdash; Inteligencia em Atendimento para Clinicas Medicas. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
