@@ -14,6 +14,7 @@
   --deep-medical-blue: #0A2463;
   --platinum-white: #F0F2F5;
   --midnight-slate: #1E293B;
+  color-scheme: dark;
 
   /* Secondary — Brand accent (the hero) */
   --neural-purple: #7C7FF2;
@@ -183,18 +184,9 @@ p {
   letter-spacing: 0.15em;
   font-weight: 600;
 
-  /* Shining Gradient Text Effect */
-  background: linear-gradient(120deg,
-      rgba(148, 163, 184, 1) 30%,
-      rgba(255, 255, 255, 1) 45%,
-      rgba(255, 255, 255, 1) 55%,
-      rgba(148, 163, 184, 1) 70%);
-  background-size: 200% auto;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shineText 5s linear infinite;
+  /* Shining Gradient Text Effect REMOVED to fix mobile background issue */
+  color: var(--platinum-white);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .section-subtitle {
@@ -1917,7 +1909,7 @@ p {
 
   .bento-vs {
     margin: 20px 0;
-    transform: rotate(90deg);
+    transform: none;
   }
 
   .bento-wall {
@@ -2116,7 +2108,8 @@ p {
   }
 
   /* Metrics Grid */
-  .metrics-grid {
+  .metrics-grid,
+  .urgency-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
