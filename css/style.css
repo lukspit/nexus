@@ -1840,25 +1840,73 @@ details.faq-item[open] .faq-icon {
   color: var(--platinum-white);
 }
 
-.founder-signature {
+.founder-signature-wrapper {
   margin-top: 32px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 24px;
   border-left: 3px solid var(--quantum-cyan);
-  padding-left: 16px;
+  padding-left: 20px;
 }
 
-.founder-signature strong {
+.founder-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.founder-details strong {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--platinum-white);
 }
 
-.founder-signature span {
+.founder-details span {
   font-size: 0.9rem;
   color: var(--precision-silver);
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.founder-social-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.founder-social-badge:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--neural-purple);
+  transform: translateY(-2px);
+}
+
+.founder-social-badge .social-icon {
+  color: var(--platinum-white);
+  width: 24px;
+  height: 24px;
+}
+
+.founder-social-badge .social-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.social-handle {
+  font-weight: 600;
+  color: var(--platinum-white);
+  font-size: 0.95rem;
+}
+
+.social-stat {
+  font-size: 0.75rem;
+  color: var(--quantum-cyan);
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
@@ -1868,17 +1916,24 @@ details.faq-item[open] .faq-icon {
     text-align: center;
   }
 
-  .founder-signature {
+  .founder-signature-wrapper {
     border-left: none;
     border-top: 3px solid var(--quantum-cyan);
     padding-left: 0;
-    padding-top: 16px;
+    padding-top: 24px;
+    flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
 
   .founder-photo {
     max-width: 280px;
-    /* Optional: Make it circular on mobile? Or keep rect */
+  }
+
+  .founder-social-badge {
+    width: 100%;
+    justify-content: center;
+    max-width: 300px;
   }
 }
 
