@@ -2913,6 +2913,8 @@ details.faq-item[open] .faq-icon {
     align-items: center;
     justify-content: center;
     overflow: visible;
+    touch-action: pan-y;
+    /* Allow vertical scroll, but capture horizontal for JS */
     /* Allow arrows to hang out */
   }
 
