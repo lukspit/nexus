@@ -564,19 +564,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ============================================
-  // 11. MOBILE STACK SWIPER (Swiper.js)
-  // ============================================
-  if (document.querySelector('.mySwiper')) {
-    new Swiper('.mySwiper', {
-      effect: 'cards',
-      grabCursor: true,
-      loop: true,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  }
+
 
 });
