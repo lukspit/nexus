@@ -1,26 +1,26 @@
 class AuroraShader {
-    constructor(canvasId) {
-        this.container = document.getElementById(canvasId);
-        if (!this.container) return;
+  constructor(canvasId) {
+    this.container = document.getElementById(canvasId);
+    if (!this.container) return;
 
-        this.scene = new THREE.Scene();
-        this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-        this.renderer = new THREE.WebGLRenderer({
-            alpha: true,
-            antialias: true
-        });
+    this.scene = new THREE.Scene();
+    this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    this.renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true
+    });
 
-        this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        this.container.appendChild(this.renderer.domElement);
+    this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.container.appendChild(this.renderer.domElement);
 
-        this.initShader();
-        this.bindEvents();
-        this.animate();
-    }
+    this.initShader();
+    this.bindEvents();
+    this.animate();
+  }
 
-    initShader() {
-        const vertexShader = `
+  initShader() {
+    const vertexShader = `
       varying vec2 vUv;
       void main() {
         vUv = uv;
@@ -28,7 +28,7 @@ class AuroraShader {
       }
     `;
 
-        const fragmentShader = `
+    const fragmentShader = `
       uniform float iTime;
       uniform vec2 iResolution;
       varying vec2 vUv;
@@ -73,7 +73,7 @@ class AuroraShader {
         vec2 p = (gl_FragCoord.xy - 0.5 * iResolution.xy) / iResolution.y;
         
         // Background base color (deep cosmic void)
-        vec3 color = vec3(0.02, 0.02, 0.05);
+        vec3 color = vec3(0.03, 0.01, 0.08);
 
         // Aurora loop
         for (float i = 1.0; i < 4.0; i++) {
@@ -95,51 +95,51 @@ class AuroraShader {
           // Color palette for this layer
           // Mixing Purple (Neural) and Cyan (Quantum) from brand
           vec3 auroraColor = mix(
-            vec3(0.38, 0.4, 0.94), // Neural Purple
-            vec3(0.02, 0.71, 0.83), // Quantum Cyan
-            sin(t * 0.5) * 0.5 + 0.5
+            vec3(0.45, 0.25, 0.95), // Rich Neural Purple
+            vec3(0.35, 0.2, 0.85),  // Deep Violet
+            sin(t * 0.5) * 0.3 + 0.3
           );
           
           // Additive blending
-          color += auroraColor * intensity * 0.6;
+          color += auroraColor * intensity * 0.5;
         }
         
         // Vignette
-        float vignette = 1.0 - length(vUv - 0.5) * 0.8;
+        float vignette = 1.0 - length(vUv - 0.5) * 1.0;
         color *= vignette;
 
         gl_FragColor = vec4(color, 1.0);
       }
     `;
 
-        this.uniforms = {
-            iTime: { value: 0 },
-            iResolution: { value: new THREE.Vector2(this.container.offsetWidth, this.container.offsetHeight) }
-        };
+    this.uniforms = {
+      iTime: { value: 0 },
+      iResolution: { value: new THREE.Vector2(this.container.offsetWidth, this.container.offsetHeight) }
+    };
 
-        const geometry = new THREE.PlaneGeometry(2, 2);
-        const material = new THREE.ShaderMaterial({
-            uniforms: this.uniforms,
-            vertexShader: vertexShader,
-            fragmentShader: fragmentShader,
-            transparent: true
-        });
+    const geometry = new THREE.PlaneGeometry(2, 2);
+    const material = new THREE.ShaderMaterial({
+      uniforms: this.uniforms,
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader,
+      transparent: true
+    });
 
-        this.mesh = new THREE.Mesh(geometry, material);
-        this.scene.add(this.mesh);
-    }
+    this.mesh = new THREE.Mesh(geometry, material);
+    this.scene.add(this.mesh);
+  }
 
-    bindEvents() {
-        window.addEventListener('resize', () => {
-            if (!this.container) return;
-            this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
-            this.uniforms.iResolution.value.set(this.container.offsetWidth, this.container.offsetHeight);
-        });
-    }
+  bindEvents() {
+    window.addEventListener('resize', () => {
+      if (!this.container) return;
+      this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+      this.uniforms.iResolution.value.set(this.container.offsetWidth, this.container.offsetHeight);
+    });
+  }
 
-    animate() {
-        requestAnimationFrame(this.animate.bind(this));
-        this.uniforms.iTime.value += 0.005; // Adjust speed
-        this.renderer.render(this.scene, this.camera);
-    }
+  animate() {
+    requestAnimationFrame(this.animate.bind(this));
+    this.uniforms.iTime.value += 0.005; // Adjust speed
+    this.renderer.render(this.scene, this.camera);
+  }
 }

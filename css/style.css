@@ -335,17 +335,19 @@ p {
 }
 
 .nav-logo img {
-  height: 32px;
+  height: 38px;
   width: auto;
-  filter: drop-shadow(0 0 8px rgba(124, 127, 242, 0.3));
+  border-radius: 10px;
+  filter: drop-shadow(0 0 12px rgba(124, 127, 242, 0.5));
 }
 
 .nav-logo-text {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--platinum-white);
+  text-shadow: 0 0 20px rgba(124, 127, 242, 0.35);
 }
 
 .nav-links {
@@ -1551,7 +1553,7 @@ details.faq-item[open] .faq-icon {
   z-index: 0;
   /* Behind content */
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.75;
 }
 
 /* Ensure diagnostic-wrapper sits on top */
