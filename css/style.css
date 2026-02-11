@@ -1806,13 +1806,10 @@ details.faq-item[open] .faq-icon {
   position: relative;
   z-index: 2;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  /* Grayscale to Color on hover effect option */
-  filter: grayscale(100%);
-  transition: filter 0.5s ease;
 }
 
 .founder-photo:hover {
-  filter: grayscale(0%);
+  /* Removed grayscale toggle */
 }
 
 .founder-image-glow {
