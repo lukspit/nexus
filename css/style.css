@@ -1102,6 +1102,104 @@ p {
   z-index: 0;
 }
 
+/* Product Visual Placeholder */
+.product-visual-placeholder {
+  max-width: 800px;
+  margin: 40px auto 60px;
+  text-align: center;
+}
+
+.mockup-window {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.mockup-header {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mockup-header .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.red {
+  background: #ff5f56;
+}
+
+.dot.yellow {
+  background: #ffbd2e;
+}
+
+.dot.green {
+  background: #27c93f;
+}
+
+.mockup-body {
+  height: 300px;
+  display: flex;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.mockup-ui-sidebar {
+  width: 20%;
+  border-right: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.mockup-ui-main {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.mockup-chat-bubble {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  max-width: 70%;
+  line-height: 1.4;
+}
+
+.mockup-chat-bubble.left {
+  background: rgba(255, 255, 255, 0.1);
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+.mockup-chat-bubble.right {
+  background: var(--neural-purple);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.product-visual-placeholder .caption {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--precision-silver);
+  font-style: italic;
+}
+
+/* Mobile adjustments for mockup */
+@media (max-width: 768px) {
+  .mockup-ui-sidebar {
+    display: none;
+  }
+}
+
 .step-card {
   position: relative;
   z-index: 1;
