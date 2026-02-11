@@ -2886,8 +2886,8 @@ details.faq-item[open] .faq-icon {
 
   /* Testimonials */
   .testimonial-card {
-    width: 230px;
-    /* Narrower for 'peek' effect */
+    width: 200px;
+    /* Narrower for better 'peek' and vertical flow */
     height: 380px;
     /* Reduced fixed height to be more compact */
     padding: 24px;
