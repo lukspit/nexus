@@ -2886,20 +2886,22 @@ details.faq-item[open] .faq-icon {
 
   /* Testimonials */
   .testimonial-card {
-    width: 200px;
-    /* Narrower for better 'peek' and vertical flow */
-    height: 380px;
-    /* Reduced fixed height to be more compact */
-    padding: 24px;
+    width: 170px;
+    /* Ultra-narrow for maximum 'peek' */
+    height: 360px;
+    /* Slightly shorter to balance */
+    padding: 16px;
+    /* Reduced padding for narrow width */
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    /* Force content to fill vertical space */
     scroll-snap-align: center;
     background: var(--bg-primary);
     border: 1px solid var(--border-subtle);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     border-radius: var(--radius-lg);
     flex-shrink: 0;
-    /* Ensure they don't squash */
   }
 
   .testimonials-marquee-wrapper {
