@@ -611,6 +611,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnNext) btnNext.addEventListener('click', nextCard);
     if (btnPrev) btnPrev.addEventListener('click', prevCard);
 
+    // Initial call to set correct classes
+    updateStack();
+
     // Touch Swipe Logic
     let touchStartX = 0;
     let touchEndX = 0;
@@ -633,11 +636,6 @@ document.addEventListener('DOMContentLoaded', () => {
         prevCard(); // Swipe Right -> Prev
       }
     }
-
-    // Auto-advance slowly if no interaction (optional, but requested "movement" earlier)
-    // Disabled for stack as user wants focus, but adding a slow interval just in case
-    // let autoPlay = setInterval(nextCard, 5000); 
-    // stackWrapper.addEventListener('touchstart', () => clearInterval(autoPlay));
   }
 
 });
