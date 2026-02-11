@@ -1536,7 +1536,29 @@ details.faq-item[open] .faq-icon {
    15. DIAGNOSTIC FORM
    ============================================ */
 .diagnostic {
+  position: relative;
+  overflow: hidden;
   padding: var(--section-padding);
+}
+
+/* Shader Container */
+#shader-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  /* Behind content */
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Ensure diagnostic-wrapper sits on top */
+.diagnostic .container,
+.diagnostic-wrapper {
+  position: relative;
+  z-index: 2;
 }
 
 .diagnostic-wrapper {
