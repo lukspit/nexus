@@ -1677,6 +1677,117 @@ details.faq-item[open] .faq-icon {
 }
 
 /* ============================================
+   14B. FOUNDER SECTION
+   ============================================ */
+.founder-section {
+  padding: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+.founder-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.founder-image-col {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.founder-photo {
+  width: 100%;
+  max-width: 320px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  /* Grayscale to Color on hover effect option */
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+
+.founder-photo:hover {
+  filter: grayscale(0%);
+}
+
+.founder-image-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(124, 127, 242, 0.15), transparent 70%);
+  z-index: 1;
+}
+
+.founder-content h2 {
+  margin-bottom: 24px;
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+.founder-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--precision-silver);
+  margin-bottom: 20px;
+}
+
+.founder-text strong {
+  color: var(--platinum-white);
+}
+
+.founder-signature {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  border-left: 3px solid var(--quantum-cyan);
+  padding-left: 16px;
+}
+
+.founder-signature strong {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--platinum-white);
+}
+
+.founder-signature span {
+  font-size: 0.9rem;
+  color: var(--precision-silver);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .founder-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .founder-signature {
+    border-left: none;
+    border-top: 3px solid var(--quantum-cyan);
+    padding-left: 0;
+    padding-top: 16px;
+    align-items: center;
+  }
+
+  .founder-photo {
+    max-width: 280px;
+    /* Optional: Make it circular on mobile? Or keep rect */
+  }
+}
+
+/* ============================================
    10B. ANIMATIONS & COMPONENTS
    ============================================ */
 
