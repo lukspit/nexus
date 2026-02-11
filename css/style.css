@@ -2439,10 +2439,14 @@ details.faq-item[open] .faq-icon {
   filter: grayscale(100%);
 }
 
-.integration-item svg {
+.integration-item svg,
+.integration-item img {
   height: 32px;
   width: auto;
   fill: currentColor;
+  /* for SVGs */
+  object-fit: contain;
+  /* for IMGs */
 }
 
 .integration-item:hover {
