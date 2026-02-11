@@ -1435,7 +1435,7 @@ p {
 }
 
 /* Stack wrapper hidden on desktop, visible on mobile via media query */
-.testimonial-stack-wrapper {
+.testimonial-stack-container {
   display: none;
 }
 
@@ -2260,9 +2260,7 @@ details.faq-item[open] .faq-icon {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.founder-photo:hover {
-  /* Removed grayscale toggle */
-}
+
 
 .founder-image-glow {
   position: absolute;
@@ -2898,108 +2896,70 @@ details.faq-item[open] .faq-icon {
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* Testimonials Mobile Stack */
+  /* Testimonials Mobile Stack (Swiper.js) */
   .testimonials-marquee-wrapper {
     display: none;
   }
 
-  .testimonial-stack-wrapper {
-    display: flex !important;
-    position: relative;
+  .testimonial-stack-container {
+    display: block !important;
     width: 100%;
-    max-width: 320px;
-    height: 380px;
-    margin: 40px auto 0;
-    align-items: center;
-    justify-content: center;
-    overflow: visible;
-    touch-action: pan-y;
-    /* Allow vertical scroll, but capture horizontal for JS */
-    /* Allow arrows to hang out */
+    overflow: hidden;
+    padding: 20px 0 60px;
+    margin-top: 20px;
   }
 
-  .card-stack-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    /* Keep center area for cards */
+  .swiper {
+    width: 280px;
+    height: 380px;
+    overflow: visible;
+    /* Allow slides to be seen outside the box */
+  }
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
   }
 
   .testimonial-card-stack {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background: var(--bg-primary);
-    /* Opaque bg to hide cards behind */
+    /* Dark primary background */
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     padding: 24px;
     display: flex;
     flex-direction: column;
-    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    transform-origin: center bottom;
-    opacity: 0;
-    user-select: none;
-    overflow: hidden;
-    /* Hide overflow */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    text-align: left;
   }
 
-  .testimonial-card-stack.active {
-    z-index: 10;
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* Custom Swiper Buttons styling */
+  .stack-nav-btn-swiper {
+    color: var(--neural-purple) !important;
+    transform: scale(0.6);
+    top: auto !important;
+    bottom: -50px !important;
   }
 
-  .testimonial-card-stack.next {
-    z-index: 5;
-    opacity: 0.6;
-    transform: scale(0.92) translateY(15px);
+  .swiper-button-next {
+    right: 25% !important;
   }
 
-  .testimonial-card-stack.prev {
-    z-index: 0;
-    opacity: 0;
-    transform: scale(1.1) translateX(-50px) rotate(-10deg);
-    pointer-events: none;
+  .swiper-button-prev {
+    left: 25% !important;
   }
 
-  .testimonial-card-stack.hidden {
-    z-index: -1;
-    opacity: 0;
-    transform: scale(0.8) translateY(30px);
-    pointer-events: none;
-  }
-
-  /* Navigation Arrows */
   .stack-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--platinum-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 20;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(4px);
-  }
-
-  .stack-nav-btn svg {
-    width: 24px;
-    height: 24px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.5;
-    /* Large and bold */
+    display: none;
+    /* Hide old custom buttons */
   }
 
   .stack-nav-btn:active {

@@ -565,96 +565,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================================
-  // 11. MOBILE STACK SWIPER (Robust Implementation)
+  // 11. MOBILE STACK SWIPER (Swiper.js)
   // ============================================
-  (function initStackSwiper() {
-    const stackWrapper = document.querySelector('.testimonial-stack-wrapper');
-    if (!stackWrapper) return;
-
-    const cards = Array.from(stackWrapper.querySelectorAll('.testimonial-card-stack'));
-    const btnNext = stackWrapper.querySelector('.stack-nav-btn.next');
-    const btnPrev = stackWrapper.querySelector('.stack-nav-btn.prev');
-    let currentIndex = 0;
-    let isAnimating = false;
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    // Initial State Setup
-    function updateStack() {
-      cards.forEach((card, index) => {
-        // Reset classes
-        card.className = 'testimonial-card-stack';
-
-        // Determine position relative to current index
-        // Handle wrapping logic for infinite loop effect
-        let diff = (index - currentIndex + cards.length) % cards.length;
-
-        if (diff === 0) {
-          card.classList.add('active');
-          card.style.zIndex = "10";
-          card.style.opacity = "1";
-          card.style.pointerEvents = "auto";
-        } else if (diff === 1) {
-          card.classList.add('next');
-          card.style.zIndex = "5";
-          card.style.opacity = "0.6";
-          card.style.pointerEvents = "none";
-        } else if (diff === cards.length - 1) {
-          card.classList.add('prev');
-          card.style.zIndex = "0";
-          card.style.opacity = "0";
-          card.style.pointerEvents = "none";
-        } else {
-          card.classList.add('hidden');
-          card.style.zIndex = "-1";
-          card.style.opacity = "0";
-          card.style.pointerEvents = "none";
-        }
-      });
-    }
-
-    function nextCard() {
-      if (isAnimating) return;
-      isAnimating = true;
-      currentIndex = (currentIndex + 1) % cards.length;
-      updateStack();
-      setTimeout(() => { isAnimating = false; }, 300);
-    }
-
-    function prevCard() {
-      if (isAnimating) return;
-      isAnimating = true;
-      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-      updateStack();
-      setTimeout(() => { isAnimating = false; }, 300);
-    }
-
-    // Event Listeners
-    if (btnNext) btnNext.onclick = (e) => { e.preventDefault(); nextCard(); };
-    if (btnPrev) btnPrev.onclick = (e) => { e.preventDefault(); prevCard(); };
-
-    // Touch Swipe Logic
-    stackWrapper.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    stackWrapper.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-      const threshold = 50;
-      if (touchEndX < touchStartX - threshold) {
-        nextCard(); // Swipe Left -> Next
-      }
-      if (touchEndX > touchStartX + threshold) {
-        prevCard(); // Swipe Right -> Prev
-      }
-    }
-
-    // Initialize immediately
-    updateStack();
-  })();
+  if (document.querySelector('.mySwiper')) {
+    new Swiper('.mySwiper', {
+      effect: 'cards',
+      grabCursor: true,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  }
 
 });
