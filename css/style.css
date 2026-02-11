@@ -1415,8 +1415,11 @@ p {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: var(--gap-md);
+  /* margin-bottom: var(--gap-md); REMOVED: Info is now below quote, logo stands alone or with title */
+  margin-bottom: 24px;
 }
+
+/* ... logo container ... */
 
 .testimonial-logo-container {
   width: 56px;
@@ -1437,10 +1440,17 @@ p {
   object-fit: contain;
 }
 
+.testimonial-info {
+  margin-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 16px;
+}
+
 .testimonial-info h4 {
-  font-size: 1rem;
-  margin-bottom: 2px;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
   color: var(--platinum-white);
+  font-weight: 600;
 }
 
 .testimonial-info p {
