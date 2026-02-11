@@ -1311,20 +1311,22 @@ p {
   gap: 16px;
 }
 
-.faq-item {
+/* FAQ - Native Details/Summary */
+details.faq-item {
   background: var(--bg-glass);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
   transition: all var(--transition-fast);
+  margin-bottom: 16px;
 }
 
-.faq-item.active {
+details.faq-item[open] {
   border-color: var(--border-active);
   background: var(--bg-card-hover);
 }
 
-.faq-question {
+summary.faq-question {
   width: 100%;
   padding: 24px;
   display: flex;
@@ -1335,6 +1337,13 @@ p {
   font-size: 1.1rem;
   color: var(--platinum-white);
   font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  /* Remove default triangle */
+}
+
+summary.faq-question::-webkit-details-marker {
+  display: none;
 }
 
 .faq-icon {
@@ -1345,29 +1354,34 @@ p {
   justify-content: center;
   transition: transform var(--transition-normal);
   color: var(--precision-silver);
-  /* Ensure icon doesn't shrink */
   flex-shrink: 0;
 }
 
-.faq-item.active .faq-icon {
+details.faq-item[open] .faq-icon {
   transform: rotate(180deg);
   color: var(--quantum-cyan);
 }
 
 .faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height var(--transition-normal);
-  /* Fix for mobile touch z-index issues */
-  position: relative;
-  z-index: 2;
-}
-
-.faq-answer-inner {
   padding: 0 24px 24px;
   color: var(--precision-silver);
   font-size: 1rem;
   line-height: 1.6;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  /* Optional separator */
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ============================================
@@ -2255,11 +2269,13 @@ p {
 /* Small Mobile (380px and below) */
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: 2.25rem;
+    line-height: 1.2;
   }
 
   .hero-subtitle {
-    font-size: 0.95rem;
+    font-size: 1.15rem;
+    line-height: 1.5;
   }
 
   .btn {
