@@ -2861,6 +2861,8 @@ details.faq-item[open] .faq-icon {
   .marquee-row {
     width: 100%;
     overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 
   /* Disable marquee animation and enable native scroll on mobile */
