@@ -2886,10 +2886,11 @@ details.faq-item[open] .faq-icon {
 
   /* Testimonials */
   .testimonial-card {
-    width: 280px;
-    height: 400px;
-    /* More vertical as requested */
-    padding: 28px 24px;
+    width: 230px;
+    /* Narrower for 'peek' effect */
+    height: 380px;
+    /* Reduced fixed height to be more compact */
+    padding: 24px;
     display: flex;
     flex-direction: column;
     scroll-snap-align: center;
@@ -2915,8 +2916,8 @@ details.faq-item[open] .faq-icon {
     gap: 16px;
     padding: 0 20px;
     width: max-content;
-    animation: scrollLeft 60s linear infinite;
-    /* Smooth slow animation back! */
+    animation: scrollLeft 100s linear infinite;
+    /* Much slower for narrow cards */
   }
 
   .testimonials-marquee:hover {
@@ -2924,12 +2925,13 @@ details.faq-item[open] .faq-icon {
     /* Allow reading on hover/touch hold */
   }
 
-  /* Force vertical alignment of content inside */
+  /* Force compact vertical alignment */
   .testimonial-quote {
     flex-grow: 1;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin: 20px 0;
+    font-size: 0.95rem;
+    /* Slightly smaller text for compact card */
+    line-height: 1.5;
+    margin: 16px 0;
   }
 
 
