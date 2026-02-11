@@ -9,8 +9,6 @@
     content="Atendimento inteligente no WhatsApp para clinicas medicas. Resposta em 30 segundos, 24/7. Enquanto voce dorme, o Nexus responde, qualifica e agenda. Diagnostico gratuito.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" href="assets/logo-icon.png">
-  <!-- Three.js for shader effects -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
@@ -927,9 +925,6 @@
 
   <!-- ===== SECTION 9: DIAGNOSTIC FORM (2 STEPS) ===== -->
   <section class="diagnostic" id="diagnostico">
-    <!-- Shader Background -->
-    <div id="shader-container"></div>
-
     <div class="container">
       <div class="text-center reveal">
         <span class="section-label">Diagnostico Gratuito</span>
@@ -1096,16 +1091,6 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/shader-animation.js"></script>
-  <script>
-    // Initialize shader if container exists
-    document.addEventListener('DOMContentLoaded', () => {
-      if (document.getElementById('shader-container')) {
-        new AuroraShader('shader-container');
-      }
-    });
-  </script>
   <script src="js/main.js"></script>
 </body>
 
