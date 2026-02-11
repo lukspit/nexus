@@ -1415,8 +1415,8 @@ p {
   display: flex;
   align-items: center;
   gap: 16px;
-  /* margin-bottom: var(--gap-md); REMOVED: Info is now below quote, logo stands alone or with title */
-  margin-bottom: 24px;
+  /* Back to original spacing */
+  margin-bottom: var(--gap-md);
 }
 
 /* ... logo container ... */
@@ -1441,22 +1441,39 @@ p {
 }
 
 .testimonial-info {
-  margin-top: 24px;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 16px;
+  /* Reverted to sit in header */
+  margin-top: 0;
+  border-top: none;
+  padding-top: 0;
 }
 
 .testimonial-info h4 {
-  font-size: 0.9rem;
-  margin-bottom: 4px;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
   color: var(--platinum-white);
   font-weight: 600;
+  line-height: 1.2;
 }
 
 .testimonial-info p {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--precision-silver);
+  line-height: 1.2;
 }
+
+.testimonial-source {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.7rem;
+  color: var(--precision-silver);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+
 
 .testimonial-quote {
   font-size: 0.95rem;
