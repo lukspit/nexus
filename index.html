@@ -66,18 +66,163 @@
           </span>
         </div>
       </div>
-      <div class="hero-stats reveal">
-        <div class="hero-stat">
-          <div class="hero-stat-value" data-target="30" data-suffix="s">0s</div>
-          <div class="hero-stat-label">tempo de resposta no WhatsApp com Nexus</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value" data-target="24" data-suffix="/7">0</div>
-          <div class="hero-stat-label">atendimento ininterrupto, inclusive feriados</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-value" data-target="78" data-suffix="%">0%</div>
-          <div class="hero-stat-label">dos pacientes fecham com quem responde primeiro*</div>
+      <!-- HERO DASHBOARD -->
+      <div class="hero-dashboard-wrapper reveal">
+        <div class="hero-dashboard-glow"></div>
+        <div class="hero-dashboard">
+          <!-- macOS Window Chrome -->
+          <div class="dashboard-chrome">
+            <div class="chrome-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="chrome-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+              <span>Nexus AI Dashboard</span>
+            </div>
+            <div class="chrome-status">
+              <span class="status-dot-live"></span>
+              <span>Online 24/7</span>
+            </div>
+          </div>
+
+          <!-- Dashboard Body -->
+          <div class="dashboard-body">
+            <!-- Metric Cards Row -->
+            <div class="dashboard-metrics">
+              <div class="dash-metric-card">
+                <div class="dash-metric-header">
+                  <div class="dash-metric-icon cyan">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  </div>
+                  <span class="dash-metric-trend up">+18%</span>
+                </div>
+                <div class="dash-metric-value" data-target="42" data-suffix="">0</div>
+                <div class="dash-metric-label">Pacientes Hoje</div>
+              </div>
+
+              <div class="dash-metric-card">
+                <div class="dash-metric-header">
+                  <div class="dash-metric-icon green">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <span class="dash-metric-trend up">+5%</span>
+                </div>
+                <div class="dash-metric-value" data-target="98" data-suffix="%">0%</div>
+                <div class="dash-metric-label">Taxa de Resposta</div>
+              </div>
+
+              <div class="dash-metric-card">
+                <div class="dash-metric-header">
+                  <div class="dash-metric-icon purple">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  </div>
+                  <span class="dash-metric-trend up">+12%</span>
+                </div>
+                <div class="dash-metric-value" data-target="12" data-suffix="">0</div>
+                <div class="dash-metric-label">Agendamentos</div>
+              </div>
+
+              <div class="dash-metric-card">
+                <div class="dash-metric-header">
+                  <div class="dash-metric-icon white">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  </div>
+                  <span class="dash-metric-badge">Recorde</span>
+                </div>
+                <div class="dash-metric-value" data-target="30" data-suffix="s">0s</div>
+                <div class="dash-metric-label">Tempo Medio</div>
+              </div>
+            </div>
+
+            <!-- Bottom Row: Chart + Chat Preview -->
+            <div class="dashboard-bottom">
+              <!-- Mini Chart -->
+              <div class="dash-chart-card">
+                <div class="dash-chart-header">
+                  <span class="dash-chart-title">Conversoes - Ultimos 7 dias</span>
+                  <span class="dash-chart-badge">+23%</span>
+                </div>
+                <div class="dash-chart-area">
+                  <svg viewBox="0 0 280 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="dash-chart-svg">
+                    <defs>
+                      <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(124, 127, 242, 0.3)" />
+                        <stop offset="100%" stop-color="rgba(124, 127, 242, 0)" />
+                      </linearGradient>
+                    </defs>
+                    <!-- Area fill -->
+                    <path d="M0 70 L40 55 L80 60 L120 40 L160 45 L200 25 L240 20 L280 10 L280 80 L0 80 Z"
+                      fill="url(#chartGradient)" />
+                    <!-- Line -->
+                    <path d="M0 70 L40 55 L80 60 L120 40 L160 45 L200 25 L240 20 L280 10" stroke="var(--neural-purple)"
+                      stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Dots -->
+                    <circle cx="0" cy="70" r="3" fill="var(--neural-purple)" />
+                    <circle cx="40" cy="55" r="3" fill="var(--neural-purple)" />
+                    <circle cx="80" cy="60" r="3" fill="var(--neural-purple)" />
+                    <circle cx="120" cy="40" r="3" fill="var(--neural-purple)" />
+                    <circle cx="160" cy="45" r="3" fill="var(--neural-purple)" />
+                    <circle cx="200" cy="25" r="3" fill="var(--neural-purple)" />
+                    <circle cx="240" cy="20" r="3" fill="var(--neural-purple)" />
+                    <circle cx="280" cy="10" r="4" fill="var(--quantum-cyan)" stroke="var(--quantum-cyan)"
+                      stroke-width="2" />
+                  </svg>
+                  <div class="dash-chart-labels">
+                    <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sab</span><span>Dom</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chat Preview -->
+              <div class="dash-chat-card">
+                <div class="dash-chat-header">
+                  <span class="status-dot-live"></span>
+                  <span class="dash-chat-title">Conversa Ativa</span>
+                </div>
+                <div class="dash-chat-messages">
+                  <div class="dash-chat-msg incoming">
+                    <span class="dash-chat-bubble-in">Ola, gostaria de agendar uma consulta de dermatologia</span>
+                    <span class="dash-chat-time">15:42</span>
+                  </div>
+                  <div class="dash-chat-msg outgoing">
+                    <span class="dash-chat-bubble-out">Ola! Claro, temos horarios amanha as 14h ou 16h. Qual
+                      prefere?</span>
+                    <span class="dash-chat-time">15:42 &middot; 30s</span>
+                  </div>
+                  <div class="dash-chat-msg incoming">
+                    <span class="dash-chat-bubble-in">16h por favor!</span>
+                    <span class="dash-chat-time">15:43</span>
+                  </div>
+                  <div class="dash-chat-msg outgoing">
+                    <span class="dash-chat-bubble-out">Agendado! Amanha, 16h, Dra. Silva. Envio lembrete 2h
+                      antes.</span>
+                    <span class="dash-chat-time">15:43 &middot; 30s</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -347,23 +347,30 @@ p {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, var(--platinum-white) 0%, var(--quantum-cyan) 50%, var(--neural-purple) 100%);
-  background-size: 200% 200%;
+  /* Holographic Silver with a Cyan-Purple shine */
+  background: linear-gradient(90deg,
+      var(--platinum-white) 0%,
+      var(--platinum-white) 40%,
+      var(--quantum-cyan) 45%,
+      var(--neural-purple) 55%,
+      var(--platinum-white) 60%,
+      var(--platinum-white) 100%);
+  background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: logoShimmer 4s ease-in-out infinite;
+  animation: logoShimmer 6s linear infinite;
+  /* Subtle drop shadow to anchor it */
+  filter: drop-shadow(0 0 2px rgba(124, 127, 242, 0.3));
 }
 
 @keyframes logoShimmer {
-
-  0%,
-  100% {
-    background-position: 0% 50%;
+  0% {
+    background-position: 100% 0%;
   }
 
-  50% {
-    background-position: 100% 50%;
+  100% {
+    background-position: 0% 0%;
   }
 }
 
@@ -474,44 +481,425 @@ p {
   margin-bottom: var(--gap-2xl);
 }
 
-/* Hero Stats */
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--gap-lg);
-  max-width: 800px;
+/* ============================================
+   7B. HERO DASHBOARD
+   ============================================ */
+.hero-dashboard-wrapper {
+  position: relative;
+  max-width: 920px;
   margin: 0 auto;
 }
 
-.hero-stat {
-  background: var(--bg-glass);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
+/* Glow behind dashboard */
+.hero-dashboard-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(ellipse at center,
+      rgba(124, 127, 242, 0.12) 0%,
+      rgba(92, 184, 196, 0.06) 40%,
+      transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: dashGlowPulse 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes dashGlowPulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+/* Float animation */
+.hero-dashboard {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 17, 32, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  animation: dashFloat 6s ease-in-out infinite;
+}
+
+@keyframes dashFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* macOS Chrome Bar */
+.dashboard-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.chrome-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.chrome-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.chrome-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--precision-silver);
+  letter-spacing: 0.03em;
+}
+
+.chrome-title svg {
+  color: var(--neural-purple);
+}
+
+.chrome-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--success-green);
+}
+
+.status-dot-live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success-green);
+  animation: livePulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes livePulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(61, 170, 140, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(61, 170, 140, 0);
+  }
+}
+
+/* Dashboard Body */
+.dashboard-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Metric Cards Grid */
+.dashboard-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.dash-metric-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
-  padding: 24px 20px;
-  text-align: center;
+  padding: 16px;
   transition: all var(--transition-normal);
 }
 
-.hero-stat:hover {
-  border-color: var(--border-active);
+.dash-metric-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
   transform: translateY(-2px);
-  background: var(--bg-card-hover);
 }
 
-.hero-stat-value {
-  font-family: var(--font-mono);
-  font-size: 2.2rem;
-  font-weight: 700;
+.dash-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.dash-metric-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dash-metric-icon.cyan {
+  background: rgba(92, 184, 196, 0.1);
   color: var(--quantum-cyan);
-  line-height: 1;
-  margin-bottom: 8px;
 }
 
-.hero-stat-label {
-  font-size: 0.85rem;
+.dash-metric-icon.green {
+  background: rgba(61, 170, 140, 0.1);
+  color: var(--success-green);
+}
+
+.dash-metric-icon.purple {
+  background: rgba(124, 127, 242, 0.1);
+  color: var(--neural-purple);
+}
+
+.dash-metric-icon.white {
+  background: rgba(255, 255, 255, 0.06);
   color: var(--precision-silver);
+}
+
+.dash-metric-trend {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.dash-metric-trend.up {
+  color: var(--success-green);
+  background: rgba(61, 170, 140, 0.1);
+}
+
+.dash-metric-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  color: var(--quantum-cyan);
+  background: rgba(92, 184, 196, 0.1);
+}
+
+.dash-metric-value {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--platinum-white);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.dash-metric-label {
+  font-size: 0.78rem;
+  color: var(--precision-silver);
+  font-weight: 500;
+}
+
+/* Bottom Row */
+.dashboard-bottom {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 12px;
+}
+
+/* Chart Card */
+.dash-chart-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.dash-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.dash-chart-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--precision-silver);
+}
+
+.dash-chart-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--success-green);
+  background: rgba(61, 170, 140, 0.1);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.dash-chart-area {
+  position: relative;
+}
+
+.dash-chart-svg {
+  width: 100%;
+  height: auto;
+}
+
+.dash-chart-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.25);
+  font-family: var(--font-mono);
+}
+
+/* Chat Preview Card */
+.dash-chat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dash-chat-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--precision-silver);
+}
+
+.dash-chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.dash-chat-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dash-chat-msg.incoming {
+  align-items: flex-start;
+}
+
+.dash-chat-msg.outgoing {
+  align-items: flex-end;
+}
+
+.dash-chat-bubble-in,
+.dash-chat-bubble-out {
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.75rem;
   line-height: 1.4;
+  max-width: 90%;
+}
+
+.dash-chat-bubble-in {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--precision-silver);
+  border-bottom-left-radius: 3px;
+}
+
+.dash-chat-bubble-out {
+  background: linear-gradient(135deg, rgba(124, 127, 242, 0.25), rgba(92, 184, 196, 0.15));
+  border: 1px solid rgba(124, 127, 242, 0.15);
+  color: var(--platinum-white);
+  border-bottom-right-radius: 3px;
+}
+
+.dash-chat-time {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.2);
+  padding: 0 4px;
+}
+
+/* ============================================
+   7C. HERO DASHBOARD — RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .hero-dashboard-wrapper {
+    margin: 0 -8px;
+  }
+
+  .dashboard-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .chrome-title {
+    display: none;
+  }
+
+  .dashboard-chrome {
+    padding: 10px 16px;
+  }
+
+  .dashboard-body {
+    padding: 14px;
+  }
+
+  .dash-metric-value {
+    font-size: 1.5rem;
+  }
+
+  .dash-metric-card {
+    padding: 12px;
+  }
+
+  @keyframes dashFloat {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-4px);
+    }
+  }
 }
 
 /* ============================================

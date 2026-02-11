@@ -491,9 +491,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================
-  // 7. TEXT ROLL EFFECT (Hero Numbers)
+  // 7. TEXT ROLL EFFECT (Dashboard Metric Numbers)
   // ============================================
-  const rollElements = document.querySelectorAll('.hero-stat-value');
+  const rollElements = document.querySelectorAll('.dash-metric-value');
 
   if (rollElements.length > 0) {
     // Only roll once when in view
@@ -512,15 +512,40 @@ document.addEventListener('DOMContentLoaded', () => {
             </span>
           `;
 
-          // Add animation class to the second item via CSS (already defined)
-          // Just let the CSS animation run naturally
-
           rollObserver.unobserve(el);
         }
       });
     }, { threshold: 0.5 });
 
     rollElements.forEach(el => rollObserver.observe(el));
+  }
+
+  // ============================================
+  // 7B. DASHBOARD CHAT TYPING ANIMATION
+  // ============================================
+  const dashChatMessages = document.querySelectorAll('.dash-chat-msg');
+  if (dashChatMessages.length > 0) {
+    // Stagger the chat messages appearing
+    const chatObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const messages = entry.target.querySelectorAll('.dash-chat-msg');
+          messages.forEach((msg, i) => {
+            msg.style.opacity = '0';
+            msg.style.transform = 'translateY(10px)';
+            msg.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            setTimeout(() => {
+              msg.style.opacity = '1';
+              msg.style.transform = 'translateY(0)';
+            }, 300 + (i * 400));
+          });
+          chatObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const chatCard = document.querySelector('.dash-chat-messages');
+    if (chatCard) chatObserver.observe(chatCard);
   }
 
   // ============================================
