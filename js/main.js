@@ -564,4 +564,80 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ============================================
+  // 11. MOBILE STACK SWIPER
+  // ============================================
+  const stackWrapper = document.querySelector('.testimonial-stack-wrapper');
+  if (stackWrapper) {
+    const cards = Array.from(stackWrapper.querySelectorAll('.testimonial-card-stack'));
+    const btnNext = stackWrapper.querySelector('.stack-nav-btn.next');
+    const btnPrev = stackWrapper.querySelector('.stack-nav-btn.prev');
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    // Initial State Setup
+    function updateStack() {
+      cards.forEach((card, index) => {
+        card.className = 'testimonial-card-stack'; // Reset
+
+        if (index === currentIndex) {
+          card.classList.add('active');
+        } else if (index === (currentIndex + 1) % cards.length) {
+          card.classList.add('next');
+        } else if (index === (currentIndex - 1 + cards.length) % cards.length) {
+          card.classList.add('prev');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function nextCard() {
+      if (isAnimating) return;
+      isAnimating = true;
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateStack();
+      setTimeout(() => { isAnimating = false; }, 500);
+    }
+
+    function prevCard() {
+      if (isAnimating) return;
+      isAnimating = true;
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      updateStack();
+      setTimeout(() => { isAnimating = false; }, 500);
+    }
+
+    if (btnNext) btnNext.addEventListener('click', nextCard);
+    if (btnPrev) btnPrev.addEventListener('click', prevCard);
+
+    // Touch Swipe Logic
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    stackWrapper.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    stackWrapper.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const threshold = 50;
+      if (touchEndX < touchStartX - threshold) {
+        nextCard(); // Swipe Left -> Next
+      }
+      if (touchEndX > touchStartX + threshold) {
+        prevCard(); // Swipe Right -> Prev
+      }
+    }
+
+    // Auto-advance slowly if no interaction (optional, but requested "movement" earlier)
+    // Disabled for stack as user wants focus, but adding a slow interval just in case
+    // let autoPlay = setInterval(nextCard, 5000); 
+    // stackWrapper.addEventListener('touchstart', () => clearInterval(autoPlay));
+  }
+
 });

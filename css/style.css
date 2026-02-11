@@ -1434,6 +1434,11 @@ p {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Stack wrapper hidden on desktop, visible on mobile via media query */
+.testimonial-stack-wrapper {
+  display: none;
+}
+
 .testimonial-logo-container img {
   width: 100%;
   height: 100%;
@@ -2893,16 +2898,117 @@ details.faq-item[open] .faq-icon {
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  /* Testimonials Mobile Stack */
   .testimonials-marquee-wrapper {
-    mask-image: none;
-    margin-top: 32px;
+    display: none;
   }
 
-  .marquee-row {
+  .testimonial-stack-wrapper {
+    display: flex !important;
+    position: relative;
     width: 100%;
+    max-width: 320px;
+    height: 380px;
+    margin: 40px auto 0;
+    align-items: center;
+    justify-content: center;
     overflow: visible;
-    mask-image: none;
-    -webkit-mask-image: none;
+    /* Allow arrows to hang out */
+  }
+
+  .card-stack-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Keep center area for cards */
+  }
+
+  .testimonial-card-stack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform-origin: center bottom;
+    opacity: 0;
+    user-select: none;
+  }
+
+  .testimonial-card-stack.active {
+    z-index: 10;
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .testimonial-card-stack.next {
+    z-index: 5;
+    opacity: 0.6;
+    transform: scale(0.92) translateY(15px);
+  }
+
+  .testimonial-card-stack.prev {
+    z-index: 0;
+    opacity: 0;
+    transform: scale(1.1) translateX(-50px) rotate(-10deg);
+    pointer-events: none;
+  }
+
+  .testimonial-card-stack.hidden {
+    z-index: -1;
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+    pointer-events: none;
+  }
+
+  /* Navigation Arrows */
+  .stack-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--platinum-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .stack-nav-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    /* Large and bold */
+  }
+
+  .stack-nav-btn:active {
+    background: var(--neural-purple);
+    border-color: var(--neural-purple);
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .stack-nav-btn.prev {
+    left: -20px;
+  }
+
+  .stack-nav-btn.next {
+    right: -20px;
   }
 
 
