@@ -565,29 +565,50 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================================
-  // 11. MOBILE STACK SWIPER
+  // 11. MOBILE STACK SWIPER (Robust Implementation)
   // ============================================
-  const stackWrapper = document.querySelector('.testimonial-stack-wrapper');
-  if (stackWrapper) {
+  (function initStackSwiper() {
+    const stackWrapper = document.querySelector('.testimonial-stack-wrapper');
+    if (!stackWrapper) return;
+
     const cards = Array.from(stackWrapper.querySelectorAll('.testimonial-card-stack'));
     const btnNext = stackWrapper.querySelector('.stack-nav-btn.next');
     const btnPrev = stackWrapper.querySelector('.stack-nav-btn.prev');
     let currentIndex = 0;
     let isAnimating = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
 
     // Initial State Setup
     function updateStack() {
       cards.forEach((card, index) => {
-        card.className = 'testimonial-card-stack'; // Reset
+        // Reset classes
+        card.className = 'testimonial-card-stack';
 
-        if (index === currentIndex) {
+        // Determine position relative to current index
+        // Handle wrapping logic for infinite loop effect
+        let diff = (index - currentIndex + cards.length) % cards.length;
+
+        if (diff === 0) {
           card.classList.add('active');
-        } else if (index === (currentIndex + 1) % cards.length) {
+          card.style.zIndex = "10";
+          card.style.opacity = "1";
+          card.style.pointerEvents = "auto";
+        } else if (diff === 1) {
           card.classList.add('next');
-        } else if (index === (currentIndex - 1 + cards.length) % cards.length) {
+          card.style.zIndex = "5";
+          card.style.opacity = "0.6";
+          card.style.pointerEvents = "none";
+        } else if (diff === cards.length - 1) {
           card.classList.add('prev');
+          card.style.zIndex = "0";
+          card.style.opacity = "0";
+          card.style.pointerEvents = "none";
         } else {
           card.classList.add('hidden');
+          card.style.zIndex = "-1";
+          card.style.opacity = "0";
+          card.style.pointerEvents = "none";
         }
       });
     }
@@ -597,7 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
       isAnimating = true;
       currentIndex = (currentIndex + 1) % cards.length;
       updateStack();
-      setTimeout(() => { isAnimating = false; }, 500);
+      setTimeout(() => { isAnimating = false; }, 300);
     }
 
     function prevCard() {
@@ -605,19 +626,14 @@ document.addEventListener('DOMContentLoaded', () => {
       isAnimating = true;
       currentIndex = (currentIndex - 1 + cards.length) % cards.length;
       updateStack();
-      setTimeout(() => { isAnimating = false; }, 500);
+      setTimeout(() => { isAnimating = false; }, 300);
     }
 
-    if (btnNext) btnNext.addEventListener('click', nextCard);
-    if (btnPrev) btnPrev.addEventListener('click', prevCard);
-
-    // Initial call to set correct classes
-    updateStack();
+    // Event Listeners
+    if (btnNext) btnNext.onclick = (e) => { e.preventDefault(); nextCard(); };
+    if (btnPrev) btnPrev.onclick = (e) => { e.preventDefault(); prevCard(); };
 
     // Touch Swipe Logic
-    let touchStartX = 0;
-    let touchEndX = 0;
-
     stackWrapper.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
@@ -636,6 +652,9 @@ document.addEventListener('DOMContentLoaded', () => {
         prevCard(); // Swipe Right -> Prev
       }
     }
-  }
+
+    // Initialize immediately
+    updateStack();
+  })();
 
 });
