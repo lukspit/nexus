@@ -2886,17 +2886,18 @@ details.faq-item[open] .faq-icon {
 
   /* Testimonials */
   .testimonial-card {
-    width: 170px;
-    /* Ultra-narrow for maximum 'peek' */
-    height: 360px;
-    /* Slightly shorter to balance */
-    padding: 16px;
-    /* Reduced padding for narrow width */
+    min-width: 260px;
+    /* Strict minimum width to prevent squashing */
+    max-width: 260px;
+    /* Strict maximum width to prevent stretching */
+    width: 260px;
+    height: 380px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* Force content to fill vertical space */
-    scroll-snap-align: center;
+    scroll-snap-align: start;
+    /* Snap to start of card */
     background: var(--bg-primary);
     border: 1px solid var(--border-subtle);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -2905,26 +2906,31 @@ details.faq-item[open] .faq-icon {
   }
 
   .testimonials-marquee-wrapper {
-    display: block;
-    overflow: hidden;
-    /* Hide the scrollbar and prevent horizontal layout breaks */
-    padding: 20px 0;
-    position: relative;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 0 40px 20px;
+    /* Right padding handled by last-child margin or pseudo-element */
     width: 100%;
+    position: relative;
+  }
+
+  /* Hide scrollbar for cleaner UI */
+  .testimonials-marquee-wrapper::-webkit-scrollbar {
+    display: none;
   }
 
   .testimonials-marquee {
     display: flex;
     gap: 16px;
-    padding: 0 20px;
     width: max-content;
-    animation: scrollLeft 100s linear infinite;
-    /* Much slower for narrow cards */
-  }
-
-  .testimonials-marquee:hover {
-    animation-play-state: paused;
-    /* Allow reading on hover/touch hold */
+    /* Ensure it takes necessary width */
+    animation: none;
+    /* Disable marquee animation */
+    padding-right: 20px;
+    /* End gap */
   }
 
   /* Force compact vertical alignment */
