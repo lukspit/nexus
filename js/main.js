@@ -566,4 +566,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  // ============================================
+  // 11. MOBILE BENTO GRID TOGGLE
+  // ============================================
+  const bentoToggleBtn = document.getElementById('btn-activate-nexus');
+  const bentoWrapper = document.querySelector('.bento-comparison-wrapper');
+
+  if (bentoToggleBtn && bentoWrapper) {
+    bentoToggleBtn.addEventListener('click', () => {
+      bentoWrapper.classList.toggle('nexus-active');
+      const isActive = bentoWrapper.classList.contains('nexus-active');
+      const btnText = bentoToggleBtn.querySelector('span');
+
+      if (isActive) {
+        if (btnText) btnText.textContent = 'Ver Como Era Antes';
+        // Optional: Remove pulse animation after first interaction
+        bentoToggleBtn.style.animation = 'none';
+        bentoToggleBtn.classList.remove('btn-primary');
+        bentoToggleBtn.classList.add('btn-secondary'); // Assuming this class exists or it falls back
+      } else {
+        if (btnText) btnText.textContent = 'Ativar Nexus AI';
+        bentoToggleBtn.classList.add('btn-primary');
+        bentoToggleBtn.classList.remove('btn-secondary');
+      }
+    });
+  }
+
 });
