@@ -424,13 +424,20 @@
             <span class="pain-metric-label">entre leads perdidos, no-shows e retrabalho operacional</span>
           </div>
         </div>
-      </div>
 
-      <div class="text-center reveal" style="margin-top: 48px;">
-        <a href="#diagnostico" class="btn btn-primary">Calcular Minhas Perdas Reais</a>
-        <span class="btn-micro">Diagnostico gratuito — descubra quanto escapa da sua clinica todo mes</span>
+        <!-- Mobile Scroll Indicator (Dots) -->
+        <div class="pain-scroll-indicators">
+          <div class="scroll-dot active" data-index="0"></div>
+          <div class="scroll-dot" data-index="1"></div>
+          <div class="scroll-dot" data-index="2"></div>
+          <div class="scroll-dot" data-index="3"></div>
+        </div>
+
+        <div class="text-center reveal" style="margin-top: 48px;">
+          <a href="#diagnostico" class="btn btn-primary">Calcular Minhas Perdas Reais</a>
+          <span class="btn-micro">Diagnostico gratuito — descubra quanto escapa da sua clinica todo mes</span>
+        </div>
       </div>
-    </div>
   </section>
 
   <div class="section-divider"></div>
@@ -443,6 +450,15 @@
         <span class="section-label">Duas Realidades</span>
         <h2>Mesma Regiao. Mesma Especialidade. Resultados Opostos.</h2>
         <p class="section-subtitle">A unica diferenca? Uma delas responde em 30 segundos.</p>
+      </div>
+
+      <!-- Mobile Toggle (Switch Style) -->
+      <div class="bento-mobile-toggle reveal">
+        <div class="toggle-switch" id="bentoToggleSwitch">
+          <div class="toggle-option active" data-state="before">Como e Hoje</div>
+          <div class="toggle-option" data-state="after">Com Nexus AI</div>
+          <div class="toggle-slider"></div>
+        </div>
       </div>
 
       <div class="bento-comparison-wrapper reveal">
@@ -482,15 +498,7 @@
               <p class="bento-desc">A secretaria faz tudo. Mas nao consegue fazer nada bem.</p>
             </div>
 
-            <!-- Mobile Toggle Button (Visible only on mobile) -->
-            <div class="mobile-activate-btn-wrapper">
-              <button id="btn-activate-nexus" class="btn btn-primary pulse-glow-btn">
-                <span>Ativar Nexus AI</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
+            <!-- Mobile Toggle Button Removed (Replaced by Switch) -->
           </div>
         </div>
 

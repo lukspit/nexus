@@ -567,28 +567,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ============================================
-  // 11. MOBILE BENTO GRID TOGGLE
+  // 11. MOBILE BENTO GRID TOGGLE (SWITCH)
   // ============================================
-  const bentoToggleBtn = document.getElementById('btn-activate-nexus');
+  const bentoToggleSwitch = document.getElementById('bentoToggleSwitch');
   const bentoWrapper = document.querySelector('.bento-comparison-wrapper');
+  const toggleOptions = document.querySelectorAll('.toggle-option');
 
-  if (bentoToggleBtn && bentoWrapper) {
-    bentoToggleBtn.addEventListener('click', () => {
-      bentoWrapper.classList.toggle('nexus-active');
-      const isActive = bentoWrapper.classList.contains('nexus-active');
-      const btnText = bentoToggleBtn.querySelector('span');
+  if (bentoToggleSwitch && bentoWrapper) {
+    toggleOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        // 1. Visual State of Switch
+        toggleOptions.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
 
-      if (isActive) {
-        if (btnText) btnText.textContent = 'Ver Como Era Antes';
-        // Optional: Remove pulse animation after first interaction
-        bentoToggleBtn.style.animation = 'none';
-        bentoToggleBtn.classList.remove('btn-primary');
-        bentoToggleBtn.classList.add('btn-secondary'); // Assuming this class exists or it falls back
-      } else {
-        if (btnText) btnText.textContent = 'Ativar Nexus AI';
-        bentoToggleBtn.classList.add('btn-primary');
-        bentoToggleBtn.classList.remove('btn-secondary');
-      }
+        const state = option.getAttribute('data-state'); // 'before' or 'after'
+        bentoToggleSwitch.setAttribute('data-active', state);
+
+        // 2. Logic for Bento Grid
+        if (state === 'after') {
+          bentoWrapper.classList.add('nexus-active');
+        } else {
+          bentoWrapper.classList.remove('nexus-active');
+        }
+      });
     });
   }
 
