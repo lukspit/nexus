@@ -1120,96 +1120,22 @@
         <!-- Right: Form (2 STEPS) -->
         <div class="form-card reveal reveal-delay-2">
           <!-- Step Indicators -->
-          <div class="form-steps-indicator">
-            <div class="form-step-dot active" data-step="1"></div>
-            <div class="form-step-line"></div>
-            <div class="form-step-dot" data-step="2"></div>
+          <!-- Banner Chamada Maia -->
+          <div class="maia-trigger-card">
+            <div class="maia-trigger-header">
+              <div class="maia-avatar-wrapper">
+                <div class="maia-avatar-pulse"></div>
+                <img src="assets/maria_avatar.jpg" alt="Maia AI" class="maia-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><rect width=\'40\' height=\'40\' fill=\'%237C7FF2\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-family=\'sans-serif\'>M</text></svg>'">
+              </div>
+              <div class="maia-trigger-info">
+                <h3>Olá. Eu sou a Maia.</h3>
+                <p>Estou pronta para analisar sua clínica.</p>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-large w-100 mt-4 btn-open-maia">
+              Iniciar Diagnóstico com Maia
+            </button>
           </div>
-
-          <form id="diagnosticForm" novalidate>
-            <!-- Step 1: Contact Info -->
-            <div class="form-step active" data-step="1">
-              <h4 class="form-step-title">Seus Dados</h4>
-              <div class="form-group">
-                <label>Seu Nome <span class="required">*</span></label>
-                <input type="text" name="fullName" placeholder="Ex: Dr. Ricardo Mendes" required>
-              </div>
-              <div class="form-group">
-                <label>Nome da sua Clinica <span class="required">*</span></label>
-                <input type="text" name="clinicName" placeholder="Ex: Clinica Derma Premium" required>
-              </div>
-              <div class="form-group">
-                <label>WhatsApp (com DDD) <span class="required">*</span></label>
-                <input type="tel" name="whatsapp" placeholder="(11) 99999-9999" required>
-              </div>
-              <div class="form-group">
-                <label>Email <span class="required">*</span></label>
-                <input type="email" name="email" placeholder="seu@email.com" required>
-              </div>
-              <div class="form-nav">
-                <div></div>
-                <button type="button" class="form-btn-next" data-next="2">Proximo</button>
-              </div>
-            </div>
-
-            <!-- Step 2: Clinic Context -->
-            <div class="form-step" data-step="2">
-              <h4 class="form-step-title">Sobre Sua Clinica</h4>
-              <div class="form-group">
-                <label>Especialidade <span class="required">*</span></label>
-                <select name="specialty" required>
-                  <option value="">Selecione...</option>
-                  <option value="dermatologia">Dermatologia</option>
-                  <option value="ortopedia">Ortopedia</option>
-                  <option value="cardiologia">Cardiologia</option>
-                  <option value="ginecologia">Ginecologia</option>
-                  <option value="pediatria">Pediatria</option>
-                  <option value="odontologia">Odontologia</option>
-                  <option value="oftalmologia">Oftalmologia</option>
-                  <option value="multiespecialidades">Multiespecialidades</option>
-                  <option value="outra">Outra</option>
-                </select>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Cidade <span class="required">*</span></label>
-                  <input type="text" name="city" placeholder="Ex: Sao Paulo" required>
-                </div>
-                <div class="form-group">
-                  <label>Estado <span class="required">*</span></label>
-                  <select name="state" required>
-                    <option value="">UF</option>
-                    <option value="SP">SP</option>
-                    <option value="RJ">RJ</option>
-                    <option value="MG">MG</option>
-                    <option value="RS">RS</option>
-                    <option value="PR">PR</option>
-                    <option value="SC">SC</option>
-                    <option value="BA">BA</option>
-                    <option value="PE">PE</option>
-                    <option value="CE">CE</option>
-                    <option value="GO">GO</option>
-                    <option value="DF">DF</option>
-                    <option value="outro">Outro</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Quantos medicos atendem?</label>
-                <input type="number" name="doctors" placeholder="Ex: 3" min="1">
-              </div>
-              <div class="form-nav">
-                <button type="button" class="form-btn-back" data-back="1">Voltar</button>
-                <div></div>
-              </div>
-              <button type="submit" class="form-btn-submit">Solicitar Diagnostico Gratuito</button>
-              <div class="form-security">
-                <span>Dados seguros (LGPD)</span>
-                <span>Resposta em ate 24h</span>
-                <span>Sem compromisso</span>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
     </div>
@@ -1236,7 +1162,62 @@
     </div>
   </footer>
 
+  <!-- ===== OVERLAY DA MAIA ===== -->
+  <div class="maia-overlay" id="maiaOverlay">
+    <div class="maia-container">
+      
+      <!-- Maia Header -->
+      <div class="maia-header">
+        <div class="maia-header-left">
+          <div class="maia-header-avatar">
+            <img src="assets/maria_avatar.jpg" alt="Maia" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\'><rect width=\'32\' height=\'32\' fill=\'%237C7FF2\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-family=\'sans-serif\' font-size=\'14\'>M</text></svg>'">
+            <div class="maia-status-dot online"></div>
+          </div>
+          <div class="maia-header-info">
+            <h4>Maia</h4>
+            <span>Nexus AI Intelligence</span>
+          </div>
+        </div>
+        <button class="maia-close-btn" aria-label="Fechar" id="closeMaiaBtn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Maia Chat Area -->
+      <div class="maia-chat-area" id="maiaChatArea">
+        <!-- Messages will be injected here by JS -->
+      </div>
+
+      <!-- Maia Input Area -->
+      <div class="maia-input-area" id="maiaInputArea">
+        <div class="maia-typing-indicator hidden" id="maiaTypingIndicator">
+          <span></span><span></span><span></span>
+        </div>
+        
+        <!-- Dinamic Inputs Container -->
+        <div class="maia-input-container" id="maiaInputContainer">
+          <!-- Text Input (Default) -->
+          <div class="maia-text-input-wrapper">
+            <input type="text" id="maiaTextInput" class="maia-text-input" placeholder="Digite sua resposta..." autocomplete="off">
+            <button class="maia-send-btn" id="maiaSendBtn" aria-label="Enviar">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/main.js"></script>
+  <script src="js/maia.js"></script>
 </body>
 
 </html>
