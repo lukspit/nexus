@@ -33,19 +33,18 @@ class NexusMaia {
     // Config
     this.typingSpeed = 800; // ms to pretend typing
 
-    // Fluxo de Perguntas (A Máquina de Estados)
-    this.currentStep = 0;
-    this.flow = [
-      {
-        id: 'abertura',
-        bot: ["Olá. Sou a Maia, a inteligência virtual da Nexus.", "Vou fazer um diagnóstico rápido da sua operação para ver onde você está perdendo dinheiro.", "Para começar, com quem estou falando?"],
+    // Fluxo de Perguntas (Máquina de Estados - Branching / Nós)
+    this.currentStep = 'abertura';
+    this.flow = {
+      abertura: {
+        bot: ["Olá. Sou a Maia, a inteligência virtual da Nexus.", "Vou conduzir um mapeamento rápido da sua operação para projetar o seu potencial de recuperação de ROI.", "Para começar, com quem estou falando?"],
         type: 'text',
         placeholder: 'Seu nome ou como prefere ser chamado',
-        field: 'nome'
+        field: 'nome',
+        next: 'papel'
       },
-      {
-        id: 'papel',
-        bot: (data) => [`Prazer, ${data.nome.split(' ')[0]}. Qual o seu papel atual na clínica?`],
+      papel: {
+        bot: (data) => [`Prazer, ${data.nome.split(' ')[0]}. Qual o seu papel executivo/operacional na clínica hoje?`],
         type: 'options',
         options: [
           { label: 'Sou o Médico/Dono', value: 'medico_dono' },
@@ -53,17 +52,17 @@ class NexusMaia {
           { label: 'Secretária/Recepção', value: 'secretaria' },
           { label: 'Outro', value: 'outro' }
         ],
-        field: 'cargo'
+        field: 'cargo',
+        next: 'volume'
       },
-      {
-        id: 'volume',
+      volume: {
         bot: (data) => {
           let prefix = "";
-          if (data.cargo === 'medico_dono') prefix = "Entendi. Vamos focar em recuperar o tempo que você perde no operacional e focar no lucro.";
-          else if (data.cargo === 'gestor') prefix = "Perfeito. Vamos ver como otimizar a performance da sua equipe de atendimento.";
-          else prefix = "Legal. Vamos tentar facilitar o seu dia a dia.";
+          if (data.cargo === 'medico_dono') prefix = "Entendido. Nosso foco será devolver o seu tempo estratégico e maximizar sua margem real de lucro.";
+          else if (data.cargo === 'gestor') prefix = "Perfeito. Vamos focar em escalar a performance operacional e a conversão do seu time.";
+          else prefix = "Certo. Vamos entender como a infraestrutura da Nexus se aplica à sua rotina.";
 
-          return [prefix, "Me diz uma coisa: qual o volume aproximado de leads/mensagens novas vocês recebem por dia (WhatsApp/Direct)?"];
+          return [prefix, "Para entender a demanda atual: qual o volume aproximado de leads/mensagens novas vocês recebem por dia (WhatsApp/Direct)?"];
         },
         type: 'options',
         options: [
@@ -71,31 +70,38 @@ class NexusMaia {
           { label: 'De 10 a 50/dia', value: 'medio' },
           { label: 'Mais de 50/dia', value: 'alto' }
         ],
-        field: 'volume'
+        field: 'volume',
+        next: 'faturamento'
       },
-      {
-        id: 'tempo_resposta',
-        bot: (data) => {
-          let prefix = "Ok. É o momento ideal para estruturar a automação.";
-          if (data.volume === 'alto' || data.volume === 'medio') {
-            prefix = "Esse é um volume crítico. Se não houver escala no atendimento, vocês perdem vendas todos os dias.";
-          }
-          return [prefix, "Sendo bem transparente: quanto tempo, em média, um lead leva para receber a primeira resposta hoje?"];
-        },
+      faturamento: {
+        bot: (data) => ["Com base nesse volume, e visando entender o impacto financeiro da nossa IA na sua operação...", "Qual a faixa de faturamento médio da clínica hoje?"],
         type: 'options',
         options: [
-          { label: 'Imediatamente (equipe 100% dedicada)', value: 'imediato' },
-          { label: 'Alguns minutos a horas', value: 'horas' },
-          { label: 'Só no fim do dia ou muitas passam batido', value: 'lento' }
+          { label: 'Abaixo de R$ 50k', value: 'baixo' },
+          { label: 'De R$ 50k a R$ 150k', value: 'medio' },
+          { label: 'Acima de R$ 150k', value: 'alto' }
         ],
-        field: 'tempo_resposta'
+        field: 'faturamento',
+        next: (data) => {
+          if (data.volume === 'baixo' && data.faturamento === 'baixo') return 'desqualificacao_email';
+          return 'tempo_resposta';
+        }
       },
-      {
-        id: 'infraestrutura',
+      tempo_resposta: {
+        bot: (data) => ["E sendo bem pragmático em relação ao atendimento atual: quanto tempo, em média, um paciente leva para receber a primeira resposta da clínica hoje?"],
+        type: 'options',
+        options: [
+          { label: 'Imediatamente (equipe dedicada)', value: 'imediato' },
+          { label: 'Alguns minutos a horas', value: 'horas' },
+          { label: 'Só no fim do dia ou muitas ficam sem resposta', value: 'lento' }
+        ],
+        field: 'tempo_resposta',
+        next: 'sistema_atual'
+      },
+      sistema_atual: {
         bot: (data) => {
-          let prefix = "O Lead Response Time ideal para converter é de apenas 5 minutos. Se passa disso, a chance de conversão despenca 100x.";
-          if (data.tempo_resposta === 'imediato') prefix = "Excelente que vocês já são rápidos. Mas isso deve custar caro e depender muito de pessoas.";
-
+          let prefix = "Pacientes de alto padrão não têm paciência para aguardar. A curva de evasão é altíssima após os primeiros 5 minutos.";
+          if (data.tempo_resposta === 'imediato') prefix = "Excelente tempo de resposta. O problema é que isso custa muito caro e não escala sem inflar a folha de pagamento.";
           return [prefix, "Vocês já utilizam algum CRM médico ou sistema de agendamento?"];
         },
         type: 'options',
@@ -103,29 +109,48 @@ class NexusMaia {
           { label: 'Sim (Doctoralia, Feegow, iClinic, etc)', value: 'sim' },
           { label: 'Não, usamos planilhas ou agenda de papel', value: 'nao' }
         ],
-        field: 'sistema_atual'
+        field: 'sistema_atual',
+        next: 'email_hot'
       },
-      {
-        id: 'email',
+      email_hot: {
         bot: (data) => {
-          let prefix = "Excelente. O Nexus se conecta nativamente para ler e salvar no seu sistema.";
-          if (data.sistema_atual === 'nao') prefix = "Sem problemas. O Nexus pode organizar essa base inicial pra você.";
-          return [prefix, "Seu diagnóstico prévio está pronto.", "Qual o seu melhor e-mail para eu enviar o relatório técnico e os detalhes da plataforma?"];
+          let prefix = "Perfeito. O Nexus se conecta nativamente organizando todo esse gargalo e injetando consultas direto na agenda.";
+          if (data.sistema_atual === 'nao') prefix = "Sem problemas. A infraestrutura do Nexus organiza exatamente esse gargalo de forma automática.";
+          return [
+            prefix,
+            `Analisando a sua faixa de faturamento e o delay de resposta... A sua evasão de pacientes agendados está custando dezenas de milhares de reais anualmente à clínica. É essa perda silenciosa que o Nexus elimina instantaneamente.`,
+            "Qual o seu melhor e-mail executivo para enviarmos a projeção comercial?"
+          ];
         },
         type: 'text',
         subtype: 'email',
         placeholder: 'seu@melhoremail.com',
-        field: 'email'
+        field: 'email',
+        next: 'whatsapp_hot'
       },
-      {
-        id: 'telefone',
-        bot: ["Excelente. Última coisa para terminarmos:", "Qual o seu número de WhatsApp (com DDD) para um atendimento humano caso necessário?"],
+      whatsapp_hot: {
+        bot: ["Excelente. A projeção será mapeada pela nossa equipe corporativa.", "Para enviarmos e conectarmos você com nosso executivo Comercial: qual o seu WhatsApp (com DDD)?"],
         type: 'text',
         subtype: 'tel',
         placeholder: '(11) 99999-9999',
-        field: 'telefone'
+        field: 'telefone',
+        next: null // Fim fluxo quente
+      },
+
+      // --- ROTA DESQUALIFICADA (SOFT-REJECTION) ---
+      desqualificacao_email: {
+        bot: (data) => [
+          `Sendo muito transparente com você, ${data.nome.split(' ')[0]}: o Nexus é uma infraestrutura de inteligência artificial projetada para escalar operações com alta demanda.`,
+          "Para o seu limite de pacientes atual, a plataforma seria um recurso subutilizado. O ideal agora é você focar fortemente em alcance e tráfego orgânico/pago.",
+          "Mas quero te ajudar: posso te enviar um material técnico no e-mail sobre estratégias para gerar mais escala para clínicas. Qual e-mail utilizo?"
+        ],
+        type: 'text',
+        subtype: 'email',
+        placeholder: 'seu@melhoremail.com',
+        field: 'email',
+        next: null // Fim fluxo frio e educado
       }
-    ];
+    };
 
     this.initEvents();
   }
@@ -176,7 +201,7 @@ class NexusMaia {
   // --- CORE ENGINE ---
 
   async startDiagnosticSession() {
-    this.currentStep = 0;
+    this.currentStep = 'abertura';
     this.collectedData = {};
 
     // 1) Criar a row no Supabase
@@ -187,7 +212,7 @@ class NexusMaia {
   }
 
   async processStep() {
-    if (this.currentStep >= this.flow.length) {
+    if (!this.currentStep || !this.flow[this.currentStep]) {
       this.finishDiagnostic();
       return;
     }
@@ -208,7 +233,7 @@ class NexusMaia {
       this.showTypingIndicator();
 
       let delay = 3500;
-      if (this.currentStep === 0 && i === 0) {
+      if (this.currentStep === 'abertura' && i === 0) {
         delay = 1000; // fast start
       } else if (messages[i].length < 40) {
         delay = 2000;
@@ -356,8 +381,13 @@ class NexusMaia {
     // 4. Async Save to Supabase (Background)
     this.updateSupabaseLead();
 
-    // 5. Next Step
-    this.currentStep++;
+    // 5. Next Step Evaluation
+    const nextNode = this.flow[this.currentStep].next;
+    if (typeof nextNode === 'function') {
+      this.currentStep = nextNode(this.collectedData);
+    } else {
+      this.currentStep = nextNode;
+    }
     await this.processStep();
   }
 
@@ -432,16 +462,26 @@ class NexusMaia {
     await this.sleep(1000);
     this.hideTypingIndicator();
 
-    this.addBotMessage("Muito obrigado pelas informações.");
+    // Determinar Status de Classificação do Lead
+    const isDisqualified = (this.collectedData.volume === 'baixo' && this.collectedData.faturamento === 'baixo');
+    const finalStatus = isDisqualified ? 'disqualified' : 'hot_lead';
 
-    await this.sleep(800);
-    this.addBotMessage("Finalizando seu diagnóstico estratégico e encaminhando para a equipe da Nexus...");
+    // Anexar no collectedData pra ser enviado no webhook e ver no painel se quiser
+    this.collectedData.lead_status = finalStatus;
+
+    if (isDisqualified) {
+      this.addBotMessage("O material gratuito foi enviado. Te desejo muito sucesso na sua escala!");
+    } else {
+      this.addBotMessage("Muito obrigado pelas informações.");
+      await this.sleep(800);
+      this.addBotMessage("Finalizando seu diagnóstico estratégico e encaminhando para a equipe da Nexus...");
+    }
 
     // Final Supabase Update
     if (this.supabase && this.leadId) {
       await this.supabase
         .from('leads')
-        .update({ status: 'completed', data: this.collectedData })
+        .update({ status: finalStatus, data: this.collectedData })
         .eq('id', this.leadId);
     }
 
