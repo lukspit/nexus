@@ -28,6 +28,7 @@ class NexusMaia {
     // Lead State
     this.leadId = null;
     this.collectedData = {};
+    this.hasStarted = false;
 
     // Config
     this.typingSpeed = 800; // ms to pretend typing
@@ -153,7 +154,9 @@ class NexusMaia {
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
 
     // Start flow if empty
-    if (this.chatArea.innerHTML.trim() === '') {
+    if (!this.hasStarted) {
+      this.hasStarted = true;
+      this.chatArea.innerHTML = ''; // Clean any existing HTML comments
       this.startDiagnosticSession();
     }
   }
