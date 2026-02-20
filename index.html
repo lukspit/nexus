@@ -1125,7 +1125,8 @@
             <div class="maia-trigger-header">
               <div class="maia-avatar-wrapper">
                 <div class="maia-avatar-pulse"></div>
-                <img src="assets/maria_avatar.jpg" alt="Maia AI" class="maia-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\'><rect width=\'40\' height=\'40\' fill=\'%237C7FF2\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-family=\'sans-serif\'>M</text></svg>'">
+                <img src="assets/maia-avatar.png" alt="Maia AI" class="maia-avatar"
+                  onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'40\\\' height=\\\'40\\\'><rect width=\\\'40\\\' height=\\\'40\\\' fill=\\\'%237C7FF2\\\'/><text x=\\\'50%\\\' y=\\\'50%\\\' dominant-baseline=\\\'middle\\\' text-anchor=\\\'middle\\\' fill=\\\'white\\\' font-family=\\\'sans-serif\\\'>M</text></svg>'">
               </div>
               <div class="maia-trigger-info">
                 <h3>Olá. Eu sou a Maia.</h3>
@@ -1165,12 +1166,13 @@
   <!-- ===== OVERLAY DA MAIA ===== -->
   <div class="maia-overlay" id="maiaOverlay">
     <div class="maia-container">
-      
+
       <!-- Maia Header -->
       <div class="maia-header">
         <div class="maia-header-left">
           <div class="maia-header-avatar">
-            <img src="assets/maria_avatar.jpg" alt="Maia" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\'><rect width=\'32\' height=\'32\' fill=\'%237C7FF2\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-family=\'sans-serif\' font-size=\'14\'>M</text></svg>'">
+            <img src="assets/maia-avatar.png" alt="Maia"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'32\\\' height=\\\'32\\\'><rect width=\\\'32\\\' height=\\\'32\\\' fill=\\\'%237C7FF2\\\'/><text x=\\\'50%\\\' y=\\\'50%\\\' dominant-baseline=\\\'middle\\\' text-anchor=\\\'middle\\\' fill=\\\'white\\\' font-family=\\\'sans-serif\\\' font-size=\\\'14\\\'>M</text></svg>'">
             <div class="maia-status-dot online"></div>
           </div>
           <div class="maia-header-info">
@@ -1189,21 +1191,23 @@
       <!-- Maia Chat Area -->
       <div class="maia-chat-area" id="maiaChatArea">
         <!-- Messages will be injected here by JS -->
+        <div class="maia-typing-indicator hidden" id="maiaTypingIndicator">
+          <span></span><span></span><span></span>
+        </div>
       </div>
 
       <!-- Maia Input Area -->
       <div class="maia-input-area" id="maiaInputArea">
-        <div class="maia-typing-indicator hidden" id="maiaTypingIndicator">
-          <span></span><span></span><span></span>
-        </div>
-        
+
         <!-- Dinamic Inputs Container -->
         <div class="maia-input-container" id="maiaInputContainer">
           <!-- Text Input (Default) -->
           <div class="maia-text-input-wrapper">
-            <input type="text" id="maiaTextInput" class="maia-text-input" placeholder="Digite sua resposta..." autocomplete="off">
+            <input type="text" id="maiaTextInput" class="maia-text-input" placeholder="Digite sua resposta..."
+              autocomplete="off">
             <button class="maia-send-btn" id="maiaSendBtn" aria-label="Enviar">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
               </svg>

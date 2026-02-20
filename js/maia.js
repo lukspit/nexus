@@ -157,6 +157,7 @@ class NexusMaia {
     if (!this.hasStarted) {
       this.hasStarted = true;
       this.chatArea.innerHTML = ''; // Clean any existing HTML comments
+      this.chatArea.appendChild(this.typingIndicator); // Make sure typing indicator is there
       this.startDiagnosticSession();
     }
   }
@@ -193,8 +194,8 @@ class NexusMaia {
 
     const stepInfo = this.flow[this.currentStep];
 
-    // Clear Input Area
-    this.clearInputArea();
+    // Maintain the text bar visual if option is coming, or placeholder
+    this.renderDisabledTextInput();
 
     // Prepare Messages
     let messages = stepInfo.bot;
@@ -205,12 +206,23 @@ class NexusMaia {
     // Show Messages with typing delay
     for (let i = 0; i < messages.length; i++) {
       this.showTypingIndicator();
-      await this.sleep(this.typingSpeed);
+
+      let delay = 3500;
+      if (this.currentStep === 0 && i === 0) {
+        delay = 1000; // fast start
+      } else if (messages[i].length < 40) {
+        delay = 2000;
+      } else {
+        delay = 3000 + (Math.random() * 1000); // Between 3 and 4 secs
+      }
+
+      await this.sleep(delay);
       this.hideTypingIndicator();
       this.addBotMessage(messages[i]);
     }
 
     // Render Input mechanism
+    this.clearInputArea();
     this.renderInputBlock(stepInfo);
   }
 
@@ -218,6 +230,33 @@ class NexusMaia {
 
   clearInputArea() {
     this.inputContainer.innerHTML = '';
+  }
+
+  renderDisabledTextInput() {
+    this.clearInputArea();
+    const wrapper = document.createElement('div');
+    wrapper.className = 'maia-text-input-wrapper';
+    wrapper.style.opacity = '0.5';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'maia-text-input';
+    input.placeholder = 'Aguarde...';
+    input.disabled = true;
+
+    const btn = document.createElement('button');
+    btn.className = 'maia-send-btn';
+    btn.disabled = true;
+    btn.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"></line>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+      </svg>
+    `;
+
+    wrapper.appendChild(input);
+    wrapper.appendChild(btn);
+    this.inputContainer.appendChild(wrapper);
   }
 
   renderInputBlock(stepInfo) {
@@ -305,8 +344,8 @@ class NexusMaia {
   // --- REPLY LOGIC & SUPABASE ---
 
   async handleUserReply(displayValue, storedValue, fieldName) {
-    // 1. Clear input area to stop double clicking
-    this.clearInputArea();
+    // 1. Clear input area and block clicks with disabled input text
+    this.renderDisabledTextInput();
 
     // 2. Render user message block
     this.addUserMessage(displayValue);
@@ -347,6 +386,7 @@ class NexusMaia {
   }
 
   showTypingIndicator() {
+    this.chatArea.appendChild(this.typingIndicator); // Move up to the end
     this.typingIndicator.classList.remove('hidden');
     this.scrollToBottom();
   }
@@ -387,6 +427,7 @@ class NexusMaia {
   }
 
   async finishDiagnostic() {
+    this.renderDisabledTextInput();
     this.showTypingIndicator();
     await this.sleep(1000);
     this.hideTypingIndicator();
