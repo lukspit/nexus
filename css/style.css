@@ -3240,6 +3240,7 @@ details.faq-item[open] .faq-icon {
   margin: 0;
   opacity: 0.5;
 }
+
 /* ============================================
    20. MAIA INTERACTIVE DIAGNOSTIC (OVERLAY)
    ============================================ */
@@ -3259,7 +3260,9 @@ details.faq-item[open] .faq-icon {
 .maia-trigger-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 4px;
   background: linear-gradient(90deg, var(--neural-purple), var(--quantum-cyan));
 }
@@ -3293,9 +3296,11 @@ details.faq-item[open] .faq-icon {
 
 .maia-avatar-pulse {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   background: var(--neural-purple);
   border-radius: 50%;
   filter: blur(20px);
@@ -3305,8 +3310,17 @@ details.faq-item[open] .faq-icon {
 }
 
 @keyframes avatarPulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
-  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.1; }
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.1;
+  }
 }
 
 .maia-trigger-info h3 {
@@ -3323,10 +3337,12 @@ details.faq-item[open] .faq-icon {
 /* Fullscreen Overlay */
 .maia-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   /* Use viewport units specifically for mobile browser chromes */
-  height: 100dvh; 
+  height: 100dvh;
   background: rgba(11, 17, 32, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -3354,7 +3370,7 @@ details.faq-item[open] .faq-icon {
   flex-direction: column;
   position: relative;
   /* Add border/shadow on desktop */
-  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 601px) {
@@ -3386,23 +3402,30 @@ details.faq-item[open] .faq-icon {
 
 .maia-header-avatar {
   position: relative;
-  width: 44px; height: 44px;
+  width: 44px;
+  height: 44px;
 }
 
 .maia-header-avatar img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .maia-status-dot {
   position: absolute;
-  bottom: 0; right: 0;
-  width: 12px; height: 12px;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   border: 2px solid var(--bg-primary);
 }
-.maia-status-dot.online { background-color: var(--success-green); }
+
+.maia-status-dot.online {
+  background-color: var(--success-green);
+}
 
 .maia-header-info h4 {
   font-size: 1.1rem;
@@ -3424,7 +3447,7 @@ details.faq-item[open] .faq-icon {
 }
 
 .maia-close-btn:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: white;
 }
 
@@ -3438,9 +3461,16 @@ details.faq-item[open] .faq-icon {
   gap: 16px;
   scroll-behavior: smooth;
 }
+
 /* Hide scrollbar for cleaner look */
-.maia-chat-area::-webkit-scrollbar { width: 6px; }
-.maia-chat-area::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+.maia-chat-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.maia-chat-area::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
 
 /* Messages */
 .maia-msg {
@@ -3452,8 +3482,15 @@ details.faq-item[open] .faq-icon {
 }
 
 @keyframes msgPopIn {
-  from { opacity: 0; transform: scale(0.9) translateY(10px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .maia-msg.bot {
@@ -3486,11 +3523,14 @@ details.faq-item[open] .faq-icon {
 
 .maia-msg-time {
   font-size: 0.65rem;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
   margin-top: 4px;
   align-self: flex-end;
 }
-.maia-msg.bot .maia-msg-time { align-self: flex-start; }
+
+.maia-msg.bot .maia-msg-time {
+  align-self: flex-start;
+}
 
 /* Typing Indicator */
 .maia-typing-indicator {
@@ -3510,18 +3550,34 @@ details.faq-item[open] .faq-icon {
 }
 
 .maia-typing-indicator span {
-  width: 6px; height: 6px;
+  width: 6px;
+  height: 6px;
   background-color: var(--precision-silver);
   border-radius: 50%;
   animation: typingBounce 1.4s infinite ease-in-out both;
 }
 
-.maia-typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-.maia-typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+.maia-typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.maia-typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
 
 @keyframes typingBounce {
-  0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
-  40% { transform: scale(1); opacity: 1; }
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Input Area */
@@ -3563,11 +3619,12 @@ details.faq-item[open] .faq-icon {
 }
 
 .maia-text-input::placeholder {
-  color: rgba(255,255,255,0.3);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .maia-send-btn {
-  width: 40px; height: 40px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: var(--neural-purple);
   color: white;
@@ -3580,9 +3637,10 @@ details.faq-item[open] .faq-icon {
 .maia-send-btn:active {
   transform: scale(0.95);
 }
+
 .maia-send-btn:disabled {
-  background: rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
   cursor: not-allowed;
   transform: none;
 }
@@ -3596,8 +3654,15 @@ details.faq-item[open] .faq-icon {
 }
 
 @keyframes slideUpOptions {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .maia-option-btn {
@@ -3615,7 +3680,8 @@ details.faq-item[open] .faq-icon {
   align-items: center;
 }
 
-.maia-option-btn:hover, .maia-option-btn:active {
+.maia-option-btn:hover,
+.maia-option-btn:active {
   background: rgba(124, 127, 242, 0.15);
   border-color: var(--neural-purple);
 }
@@ -4102,5 +4168,206 @@ details.faq-item[open] .faq-icon {
 
   .kanban-col-header {
     width: 100%;
+  }
+}
+
+/* ============================================
+   MOBILE UX IMPROVEMENTS — Feb 2026
+   Overrides for all 4 sections
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  /* ====== 1. HERO — Bigger headlines, shorter copy ====== */
+  .hero h1 {
+    font-size: 2.8rem;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .hero h1 .accent-line {
+    font-size: 0.65em;
+    margin-top: 12px;
+    line-height: 1.35;
+    display: block;
+    font-weight: 500;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 28px;
+  }
+
+
+  /* ====== 2. BEFORE/AFTER — No toggle, stacked vertically ====== */
+
+  /* Hide the toggle switch entirely */
+  .bento-mobile-toggle {
+    display: none !important;
+  }
+
+  /* Show both walls always, stacked */
+  .bento-comparison-wrapper {
+    flex-direction: column;
+    gap: 0;
+    min-height: auto;
+  }
+
+  .bento-wall.before,
+  .bento-wall.after,
+  .bento-comparison-wrapper.nexus-active .bento-wall.before,
+  .bento-comparison-wrapper.nexus-active .bento-wall.after {
+    display: flex !important;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    flex-direction: column;
+  }
+
+  .bento-wall.before {
+    margin-bottom: 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding-bottom: 12px;
+  }
+
+  .bento-wall.after {
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    padding-top: 12px;
+  }
+
+  /* Show VS badge between walls */
+  .bento-vs {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transform: none !important;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--precision-silver);
+    opacity: 0.5;
+  }
+
+
+  /* ====== 3. SOCIAL PROOF — Static stacked cards ====== */
+
+  .testimonials-marquee-wrapper {
+    overflow: visible;
+    padding: 20px 0;
+  }
+
+  .marquee-row {
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .marquee-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    animation: none !important;
+  }
+
+  .marquee-inner .testimonial-card {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+    height: auto;
+    scroll-snap-align: unset;
+  }
+
+  /* Hide duplicated cards (used for marquee loop) — cards 6-10 */
+  .marquee-inner .testimonial-card:nth-child(n+6) {
+    display: none;
+  }
+
+  /* Also hide cards 3 (ANAHP) and 4 (WhatsApp) — keep only Harvard (1), Doctoralia (2), McKinsey (5) */
+  .marquee-inner .testimonial-card:nth-child(3),
+  .marquee-inner .testimonial-card:nth-child(4) {
+    display: none;
+  }
+
+
+  /* ====== 4. FOUNDER — Horizontal compact layout ====== */
+
+  .founder-wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: left;
+  }
+
+  .founder-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .founder-content .section-label {
+    display: block;
+    text-align: center;
+  }
+
+  /* Horizontal row: photo left, text right */
+  .founder-mobile-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .founder-mobile-row .founder-image-col {
+    flex-shrink: 0;
+    width: 80px;
+  }
+
+  .founder-mobile-row .founder-photo {
+    width: 80px;
+    max-width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .founder-mobile-row .founder-image-glow {
+    display: none;
+  }
+
+  .founder-mobile-row .founder-quote {
+    flex: 1;
+  }
+
+  .founder-mobile-row .founder-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .founder-signature-wrapper {
+    border-left: none;
+    border-top: 2px solid var(--quantum-cyan);
+    padding-left: 0;
+    padding-top: 16px;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .founder-social-badge {
+    width: auto;
+    justify-content: flex-start;
+  }
+}
+
+/* Desktop: founder-mobile-row should be block/default */
+@media (min-width: 769px) {
+  .founder-mobile-row {
+    display: contents;
   }
 }
