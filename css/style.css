@@ -3631,3 +3631,476 @@ details.faq-item[open] .faq-icon {
   opacity: 1;
   transform: translateX(4px);
 }
+
+/* ============================================
+   TRIAGEM INTELIGENTE SECTION
+   ============================================ */
+.triage-section {
+  padding: var(--section-padding);
+  position: relative;
+}
+
+.triage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-lg);
+  max-width: 1000px;
+  margin: var(--gap-2xl) auto 0;
+}
+
+.triage-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.triage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.triage-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+.triage-card:hover::before {
+  opacity: 1;
+}
+
+.triage-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triage-icon-wrap.decidido {
+  background: rgba(61, 170, 140, 0.1);
+  color: var(--success-green);
+}
+
+.triage-icon-wrap.curioso {
+  background: rgba(124, 127, 242, 0.1);
+  color: var(--neural-purple);
+}
+
+.triage-icon-wrap.sensivel {
+  background: rgba(92, 184, 196, 0.1);
+  color: var(--quantum-cyan);
+}
+
+.triage-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--platinum-white);
+}
+
+.triage-desc {
+  font-size: 0.95rem;
+  color: var(--precision-silver);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.triage-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  margin-top: auto;
+}
+
+.triage-tag.success {
+  background: rgba(61, 170, 140, 0.1);
+  color: var(--success-green);
+  border: 1px solid rgba(61, 170, 140, 0.2);
+}
+
+.triage-tag.purple {
+  background: rgba(124, 127, 242, 0.1);
+  color: var(--neural-purple);
+  border: 1px solid rgba(124, 127, 242, 0.2);
+}
+
+.triage-tag.cyan {
+  background: rgba(92, 184, 196, 0.1);
+  color: var(--quantum-cyan);
+  border: 1px solid rgba(92, 184, 196, 0.2);
+}
+
+.purple-pulse {
+  background: var(--neural-purple);
+  box-shadow: 0 0 8px var(--neural-purple);
+  animation: pulse 2s infinite;
+}
+
+.cyan-pulse {
+  background: var(--quantum-cyan);
+  box-shadow: 0 0 8px var(--quantum-cyan);
+  animation: pulse 2s infinite;
+}
+
+.triage-bottom-note {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.triage-bottom-note p {
+  font-size: 1.1rem;
+  color: var(--precision-silver);
+}
+
+.triage-bottom-note strong {
+  color: var(--platinum-white);
+}
+
+/* Triage Mobile */
+@media (max-width: 768px) {
+  .triage-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .triage-card {
+    padding: 24px 20px;
+  }
+}
+
+/* ============================================
+   ECOSSISTEMA NEXUS SECTION
+   ============================================ */
+.ecosystem-section {
+  padding: var(--section-padding);
+  position: relative;
+}
+
+.eco-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-lg);
+  max-width: 1100px;
+  margin: var(--gap-2xl) auto 0;
+}
+
+.eco-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.eco-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+.eco-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.eco-card-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--platinum-white);
+}
+
+.eco-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.eco-card-icon.purple {
+  background: rgba(124, 127, 242, 0.1);
+  color: var(--neural-purple);
+}
+
+.eco-card-icon.cyan {
+  background: rgba(92, 184, 196, 0.1);
+  color: var(--quantum-cyan);
+}
+
+.eco-card-icon.green {
+  background: rgba(61, 170, 140, 0.1);
+  color: var(--success-green);
+}
+
+.eco-desc {
+  font-size: 0.85rem;
+  color: var(--precision-silver);
+  line-height: 1.5;
+  margin-top: 16px;
+}
+
+/* --- Mini Kanban Mockup --- */
+.eco-mockup {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  flex-grow: 1;
+}
+
+.kanban-mock {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.kanban-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kanban-col-header {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  color: var(--precision-silver);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.kanban-item {
+  font-size: 0.7rem;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: var(--platinum-white);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.kanban-item.purple-accent {
+  background: rgba(124, 127, 242, 0.08);
+  border-left: 2px solid var(--neural-purple);
+}
+
+.kanban-item.cyan-accent {
+  background: rgba(92, 184, 196, 0.08);
+  border-left: 2px solid var(--quantum-cyan);
+}
+
+.kanban-item.green-accent {
+  background: rgba(61, 170, 140, 0.08);
+  border-left: 2px solid var(--success-green);
+}
+
+/* --- Mini Chat Mockup --- */
+.chat-mock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eco-chat-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.eco-chat-msg.in {
+  align-items: flex-start;
+}
+
+.eco-chat-msg.out {
+  align-items: flex-end;
+}
+
+.eco-chat-name {
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  color: var(--precision-silver);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  padding: 0 8px;
+}
+
+.eco-chat-text {
+  font-size: 0.75rem;
+  padding: 8px 12px;
+  border-radius: 12px;
+  line-height: 1.4;
+  max-width: 90%;
+}
+
+.eco-chat-msg.in .eco-chat-text {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--platinum-white);
+  border-bottom-left-radius: 4px;
+}
+
+.eco-chat-msg.out .eco-chat-text {
+  background: rgba(124, 127, 242, 0.15);
+  color: var(--platinum-white);
+  border-bottom-right-radius: 4px;
+  border: 1px solid rgba(124, 127, 242, 0.2);
+}
+
+.eco-chat-takeover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-top: 4px;
+  background: linear-gradient(135deg, rgba(92, 184, 196, 0.1) 0%, rgba(61, 170, 140, 0.1) 100%);
+  border: 1px dashed rgba(92, 184, 196, 0.3);
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--quantum-cyan);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* --- Mini Metrics Mockup --- */
+.metrics-mock {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.eco-mini-metric {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.eco-mini-value {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.eco-mini-value.cyan {
+  color: var(--quantum-cyan);
+}
+
+.eco-mini-value.purple {
+  color: var(--neural-purple);
+}
+
+.eco-mini-value.green {
+  color: var(--success-green);
+}
+
+.eco-mini-label {
+  font-size: 0.75rem;
+  color: var(--precision-silver);
+  flex: 1;
+  text-align: right;
+}
+
+.eco-mini-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.eco-mini-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.eco-mini-fill.cyan {
+  background: linear-gradient(90deg, var(--quantum-cyan), rgba(92, 184, 196, 0.5));
+}
+
+.eco-mini-fill.purple {
+  background: linear-gradient(90deg, var(--neural-purple), rgba(124, 127, 242, 0.5));
+}
+
+.eco-mini-fill.green {
+  background: linear-gradient(90deg, var(--success-green), rgba(61, 170, 140, 0.5));
+}
+
+/* Ecosystem Mobile */
+@media (max-width: 768px) {
+  .eco-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .eco-card {
+    padding: 20px 16px;
+  }
+
+  .kanban-mock {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .kanban-item {
+    font-size: 0.62rem;
+    padding: 5px 6px;
+  }
+
+  .kanban-col-header {
+    font-size: 0.58rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  .kanban-mock {
+    grid-template-columns: 1fr;
+  }
+
+  .kanban-col {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .kanban-col-header {
+    width: 100%;
+  }
+}

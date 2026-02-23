@@ -37,14 +37,14 @@ class NexusMaia {
     this.currentStep = 'abertura';
     this.flow = {
       abertura: {
-        bot: ["Olá. Sou a Maia, a inteligência virtual da Nexus.", "Vou conduzir um mapeamento rápido da sua operação para projetar o seu potencial de recuperação de ROI.", "Para começar, com quem estou falando?"],
+        bot: ["Olá. Eu sou a Maia. Vou fazer 4 perguntas rápidas para projetar o que sua clínica está perdendo e liberar seu diagnóstico.", "Qual o seu nome?"],
         type: 'text',
         placeholder: 'Seu nome ou como prefere ser chamado',
         field: 'nome',
         next: 'papel'
       },
       papel: {
-        bot: (data) => [`Prazer, ${data.nome.split(' ')[0]}. Qual o seu papel executivo/operacional na clínica hoje?`],
+        bot: (data) => [`Prazer, ${data.nome.split(' ')[0]}. Qual seu cargo na clínica?`],
         type: 'options',
         options: [
           { label: 'Sou o Médico/Dono', value: 'medico_dono' },
@@ -57,12 +57,7 @@ class NexusMaia {
       },
       volume: {
         bot: (data) => {
-          let prefix = "";
-          if (data.cargo === 'medico_dono') prefix = "Entendido. Nosso foco será devolver o seu tempo estratégico e maximizar sua margem real de lucro.";
-          else if (data.cargo === 'gestor') prefix = "Perfeito. Vamos focar em escalar a performance operacional e a conversão do seu time.";
-          else prefix = "Certo. Vamos entender como a infraestrutura da Nexus se aplica à sua rotina.";
-
-          return [prefix, "Para entender a demanda atual: qual o volume aproximado de leads/mensagens novas vocês recebem por dia (WhatsApp/Direct)?"];
+          return ["Em média, quantos atendimentos/orçamentos pelo WhatsApp vocês recebem por dia?"];
         },
         type: 'options',
         options: [
@@ -74,7 +69,7 @@ class NexusMaia {
         next: 'faturamento'
       },
       faturamento: {
-        bot: (data) => ["Com base nesse volume, e visando entender o impacto financeiro da nossa IA na sua operação...", "Qual a faixa de faturamento médio da clínica hoje?"],
+        bot: (data) => ["E qual a média de faturamento mensal hoje?"],
         type: 'options',
         options: [
           { label: 'Abaixo de R$ 50k', value: 'baixo' },
@@ -88,7 +83,7 @@ class NexusMaia {
         }
       },
       tempo_resposta: {
-        bot: (data) => ["E sendo bem pragmático em relação ao atendimento atual: quanto tempo, em média, um paciente leva para receber a primeira resposta da clínica hoje?"],
+        bot: (data) => ["Atualmente, quanto tempo um paciente leva para receber a 1ª resposta no WhatsApp da clínica?"],
         type: 'options',
         options: [
           { label: 'Imediatamente (equipe dedicada)', value: 'imediato' },
@@ -100,9 +95,7 @@ class NexusMaia {
       },
       sistema_atual: {
         bot: (data) => {
-          let prefix = "Pacientes de alto padrão não têm paciência para aguardar. A curva de evasão é altíssima após os primeiros 5 minutos.";
-          if (data.tempo_resposta === 'imediato') prefix = "Excelente tempo de resposta. O problema é que isso custa muito caro e não escala sem inflar a folha de pagamento.";
-          return [prefix, "Vocês já utilizam algum CRM médico ou sistema de agendamento?"];
+          return ["Vocês já utilizam algum CRM médico ou sistema de agendamento online hoje?"];
         },
         type: 'options',
         options: [
@@ -114,12 +107,8 @@ class NexusMaia {
       },
       email_hot: {
         bot: (data) => {
-          let prefix = "Perfeito. O Nexus se conecta nativamente organizando todo esse gargalo e injetando consultas direto na agenda.";
-          if (data.sistema_atual === 'nao') prefix = "Sem problemas. A infraestrutura do Nexus organiza exatamente esse gargalo de forma automática.";
           return [
-            prefix,
-            `Analisando a sua faixa de faturamento e o delay de resposta... A sua evasão de pacientes agendados está custando dezenas de milhares de reais anualmente à clínica. É essa perda silenciosa que o Nexus elimina instantaneamente.`,
-            "Qual o seu melhor e-mail executivo para enviarmos a projeção comercial?"
+            "Diagnóstico pronto. Onde devo enviar o seu relatório personalizado?",
           ];
         },
         type: 'text',
@@ -129,7 +118,7 @@ class NexusMaia {
         next: 'whatsapp_hot'
       },
       whatsapp_hot: {
-        bot: ["Excelente. A projeção será mapeada pela nossa equipe corporativa.", "Para enviarmos e conectarmos você com nosso executivo Comercial: qual o seu WhatsApp (com DDD)?"],
+        bot: ["Perfeito. Qual o seu WhatsApp (com DDD) para enviarmos o acesso exclusivo e o executivo da Nexus te chamar?"],
         type: 'text',
         subtype: 'tel',
         placeholder: '(11) 99999-9999',
