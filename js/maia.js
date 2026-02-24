@@ -193,10 +193,10 @@ class NexusMaia {
     this.currentStep = 'abertura';
     this.collectedData = {};
 
-    // 1) Criar a row no Supabase
-    await this.initSupabaseLead();
+    // 1) Criar a row no Supabase (background, não bloqueia a UX)
+    this.initSupabaseLead();
 
-    // 2) Executar primeira etapa
+    // 2) Executar primeira etapa imediatamente
     this.processStep();
   }
 
@@ -221,13 +221,13 @@ class NexusMaia {
     for (let i = 0; i < messages.length; i++) {
       this.showTypingIndicator();
 
-      let delay = 3500;
+      let delay = 2500;
       if (this.currentStep === 'abertura' && i === 0) {
-        delay = 1000; // fast start
+        delay = 0; // instantâneo na abertura
       } else if (messages[i].length < 40) {
-        delay = 2000;
+        delay = 1000;
       } else {
-        delay = 3000 + (Math.random() * 1000); // Between 3 and 4 secs
+        delay = 2000 + (Math.random() * 1000); // Between 2 and 3 secs
       }
 
       await this.sleep(delay);
