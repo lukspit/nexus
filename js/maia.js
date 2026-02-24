@@ -490,8 +490,77 @@ class NexusMaia {
   }
 
   async callN8nWebhook() {
-    const webhookURL = 'https://n8n-n8n.as5fee.easypanel.host/webhook/nexus';
+    const webhookURL = 'https://n8n-n8n.as5fee.easypanel.host/webhook/nexuspagina';
     if (!webhookURL) return;
+
+    // Map internal values to readable labels for the report
+    const cargoLabels = {
+      'medico_dono': 'Médico / Dono da Clínica',
+      'gestor': 'Gestor / Gerente',
+      'secretaria': 'Secretária / Recepção',
+      'outro': 'Outro'
+    };
+    const volumeLabels = {
+      'baixo': 'Menos de 10 atendimentos/dia',
+      'medio': 'De 10 a 50 atendimentos/dia',
+      'alto': 'Mais de 50 atendimentos/dia'
+    };
+    const faturamentoLabels = {
+      'baixo': 'Abaixo de R$ 50k/mês',
+      'medio': 'De R$ 50k a R$ 150k/mês',
+      'alto': 'Acima de R$ 150k/mês'
+    };
+    const tempoRespostaLabels = {
+      'imediato': 'Imediatamente (equipe dedicada)',
+      'horas': 'Alguns minutos a horas',
+      'lento': 'Fim do dia ou ficam sem resposta'
+    };
+    const sistemaLabels = {
+      'sim': 'Sim (CRM / sistema de agendamento)',
+      'nao': 'Não (planilhas ou agenda de papel)'
+    };
+
+    const d = this.collectedData;
+
+    // Build enriched payload
+    const payload = {
+      // --- Identificação ---
+      source: 'landing_page_maia',
+      lead_id: this.leadId,
+      timestamp: new Date().toISOString(),
+
+      // --- Dados do Lead ---
+      lead: {
+        nome: d.nome || '',
+        email: d.email || '',
+        telefone: d.telefone || '',
+        cargo: cargoLabels[d.cargo] || d.cargo || '',
+        cargo_raw: d.cargo || ''
+      },
+
+      // --- Perfil da Clínica ---
+      clinica: {
+        volume_atendimentos: volumeLabels[d.volume] || d.volume || '',
+        volume_raw: d.volume || '',
+        faturamento_mensal: faturamentoLabels[d.faturamento] || d.faturamento || '',
+        faturamento_raw: d.faturamento || '',
+        tempo_resposta_whatsapp: tempoRespostaLabels[d.tempo_resposta] || d.tempo_resposta || '',
+        tempo_resposta_raw: d.tempo_resposta || '',
+        usa_crm: sistemaLabels[d.sistema_atual] || d.sistema_atual || '',
+        sistema_atual_raw: d.sistema_atual || ''
+      },
+
+      // --- Classificação automática ---
+      classificacao: {
+        status: d.lead_status || 'unknown',
+        is_qualified: d.lead_status === 'hot_lead',
+        urgencia: this.calcularUrgencia(d),
+        potencial_perda_mensal: this.estimarPerdaMensal(d)
+      },
+
+      // --- Dados brutos (fallback) ---
+      raw_data: { ...d }
+    };
 
     try {
       await fetch(webhookURL, {
@@ -499,16 +568,52 @@ class NexusMaia {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          source: 'Nexus Maia Diagnostic',
-          leadId: this.leadId,
-          data: this.collectedData,
-          timestamp: new Date().toISOString()
-        })
+        body: JSON.stringify(payload)
       });
     } catch (error) {
       console.error("N8n Webhook Error:", error);
     }
+  }
+
+  // --- Helpers para enriquecimento ---
+
+  calcularUrgencia(d) {
+    let score = 0;
+    if (d.volume === 'alto') score += 3;
+    else if (d.volume === 'medio') score += 2;
+    else score += 1;
+
+    if (d.faturamento === 'alto') score += 3;
+    else if (d.faturamento === 'medio') score += 2;
+    else score += 1;
+
+    if (d.tempo_resposta === 'lento') score += 3;
+    else if (d.tempo_resposta === 'horas') score += 2;
+    else score += 1;
+
+    if (d.sistema_atual === 'nao') score += 1;
+
+    if (score >= 9) return 'alta';
+    if (score >= 6) return 'media';
+    return 'baixa';
+  }
+
+  estimarPerdaMensal(d) {
+    // Estimativa simplificada baseada nos dados coletados
+    const volumeMap = { 'baixo': 5, 'medio': 30, 'alto': 75 };
+    const ticketMedio = 350; // ticket médio de consulta
+    const taxaPerda = d.tempo_resposta === 'lento' ? 0.35 : d.tempo_resposta === 'horas' ? 0.20 : 0.05;
+
+    const atendimentosDia = volumeMap[d.volume] || 10;
+    const perdaDiaria = Math.round(atendimentosDia * taxaPerda);
+    const perdaMensal = perdaDiaria * 22 * ticketMedio; // 22 dias úteis
+
+    return {
+      leads_perdidos_dia: perdaDiaria,
+      leads_perdidos_mes: perdaDiaria * 22,
+      estimativa_reais: `R$ ${perdaMensal.toLocaleString('pt-BR')}`,
+      valor_numerico: perdaMensal
+    };
   }
 
   // --- UTILS ---
