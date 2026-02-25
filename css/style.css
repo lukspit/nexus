@@ -293,8 +293,10 @@ p {
 }
 
 .btn-large {
-  padding: 20px 48px;
-  font-size: 1.1rem;
+  padding: 22px 52px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   border-radius: var(--radius-lg);
 }
 
@@ -3398,7 +3400,7 @@ details.faq-item[open] .faq-icon {
   }
 
   .btn-large {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   /* Stack inputs in calc just in case */
